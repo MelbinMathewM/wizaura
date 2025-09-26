@@ -35,7 +35,7 @@ export default function AboutTeam() {
     return (
         <section className="py-12 px-6 sm:px-12 lg:px-24 bg-white dark:bg-gray-900 transition-colors duration-300">
             <div className="text-center mb-8 sm:mb-16">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-600 dark:text-cyan-400">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-600 dark:text-indigo-400">
                     Meet Our Team
                 </h2>
                 <p className="mt-4 max-w-3xl mx-auto text-gray-700 dark:text-gray-300 text-base sm:text-lg">
@@ -56,7 +56,7 @@ export default function AboutTeam() {
                             alt={member.name}
                             className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                         />
-                        <h3 className="text-xl font-semibold text-cyan-600 dark:text-cyan-400 mb-1">
+                        <h3 className="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-1">
                             {member.name}
                         </h3>
                         <p className="text-gray-500 dark:text-gray-400 mb-3">{member.role}</p>
@@ -67,7 +67,7 @@ export default function AboutTeam() {
                             href={member.portfolio}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-cyan-600 dark:text-cyan-400 font-medium hover:text-cyan-700 dark:hover:text-cyan-600"
+                            className="text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-700 dark:hover:text-indigo-600"
                         >
                             View Portfolio
                         </a>

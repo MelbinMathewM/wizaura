@@ -15,7 +15,7 @@ export default function Breadcrumbs() {
                     <li>
                         <Link
                             href="/"
-                            className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                            className="text-gray-400 hover:text-indigo-400 transition-colors duration-200"
                         >
                             Home
                         </Link>
@@ -29,13 +29,13 @@ export default function Breadcrumbs() {
                             <li key={href} className="flex items-center space-x-3">
                                 <span className="text-gray-500">›</span>
                                 {isLast ? (
-                                    <span className="capitalize text-cyan-500">
+                                    <span className="capitalize text-indigo-500">
                                         {value.replace(/-/g, " ")}
                                     </span>
                                 ) : (
                                     <Link
                                         href={href}
-                                        className="capitalize text-gray-400 hover:text-cyan-400 transition-colors duration-200"
+                                        className="capitalize text-gray-400 hover:text-indigo-400 transition-colors duration-200"
                                     >
                                         {value.replace(/-/g, " ")}
                                     </Link>

@@ -7,12 +7,12 @@ export default function HomeHero() {
         <section className="relative w-full min-h-screen overflow-hidden">
             <div className="absolute inset-0 flex flex-col justify-center bg-white dark:bg-black items-center text-center px-6 sm:px-12 pt-16 sm:pt-12 z-10">
 
-                <h1 className="text-6xl lg:text-7xl font-extrabold tracking-tight text-cyan-800 dark:text-cyan-600">
+                <h1 className="text-6xl lg:text-7xl font-extrabold tracking-tight text-indigo-800 dark:text-indigo-600">
                     Wizaura
                 </h1>
 
                 {/* Slogan */}
-                <p className="text-xl sm:text-2xl text-cyan-500 dark:text-cyan-300 font-semibold">
+                <p className="text-xl sm:text-2xl text-indigo-500 dark:text-indigo-300 font-semibold">
                     The Aura of Innovation
                 </p>
 
@@ -24,13 +24,13 @@ export default function HomeHero() {
                 <div className="mt-6 flex gap-4 flex-wrap justify-center w-full">
                     <Link
                         href="/services"
-                        className="bg-cyan-100 border border-cyan-100 dark:bg-cyan-900 dark:border-cyan-900 text-cyan-700 dark:text-gray-300 px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg hover:opacity-90 transition"
+                        className="bg-indigo-100 border border-indigo-100 dark:bg-indigo-900 dark:border-indigo-900 text-indigo-700 dark:text-gray-300 px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg hover:opacity-90 transition"
                     >
                         Our Services
                     </Link>
                     <a
                         href="/contact"
-                        className="border border-cyan-600 text-cyan-600 dark:text-cyan-600 dark:border-cyan-900 px-6 py-3 rounded-lg font-semibold hover:bg-cyan-600 hover:text-white transition"
+                        className="border border-indigo-600 text-indigo-600 dark:text-indigo-600 dark:border-indigo-900 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-600 dark:hover:bg-indigo-900 hover:text-white transition"
                     >
                         Contact Us
                     </a>

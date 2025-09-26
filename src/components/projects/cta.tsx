@@ -15,7 +15,7 @@ export default function ProjectsCTA() {
                 </p>
 
                 <Link href="/contact">
-                    <span className="mt-2 sm:mt-4 inline-flex items-center bg-cyan-500 dark:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-full shadow-xl dark:shadow-cyan-950/40 hover:shadow-2xl hover:-translate-y-0.5 hover:scale-105 transition-all duration-300">
+                    <span className="mt-2 sm:mt-4 inline-flex items-center bg-indigo-500 dark:bg-indigo-600 text-white font-semibold px-6 py-3 rounded-full shadow-xl dark:shadow-indigo-950/40 hover:shadow-2xl hover:-translate-y-0.5 hover:scale-105 transition-all duration-300">
                         Get in Touch
                         <FaPaperPlane className="ml-2 text-white" />
                     </span>

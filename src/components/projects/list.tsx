@@ -18,7 +18,7 @@ export default function ProjectsList() {
     return (
         <section className="w-full py-12 px-6 sm:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-3xl sm:text-4xl font-bold text-cyan-600 dark:text-cyan-400 mb-4 sm:mb-12 text-center">
+                <h2 className="text-3xl sm:text-4xl font-bold text-indigo-600 dark:text-indigo-400 mb-4 sm:mb-12 text-center">
                     Featured Projects
                 </h2>
 
@@ -50,7 +50,7 @@ export default function ProjectsList() {
                                     {project.tech.map((tech, i) => (
                                         <span
                                             key={i}
-                                            className="text-sm text-cyan-500 dark:text-cyan-400 font-medium bg-cyan-50 dark:bg-cyan-900/30 px-2 py-1 rounded-md"
+                                            className="text-sm text-indigo-500 dark:text-indigo-400 font-medium bg-indigo-50 dark:bg-indigo-900/30 px-2 py-1 rounded-md"
                                         >
                                             {tech}
                                         </span>
@@ -64,7 +64,7 @@ export default function ProjectsList() {
                                         href={project.live}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-1 text-cyan-600 dark:text-cyan-400 font-medium hover:underline"
+                                        className="flex items-center gap-1 text-indigo-600 dark:text-indigo-400 font-medium hover:underline"
                                     >
                                         Live <FaExternalLinkAlt className="w-3 h-3" />
                                     </a>
@@ -74,7 +74,7 @@ export default function ProjectsList() {
                                         href={project.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-1 text-gray-700 dark:text-gray-300 font-medium hover:text-cyan-500 dark:hover:text-cyan-400"
+                                        className="flex items-center gap-1 text-gray-700 dark:text-gray-300 font-medium hover:text-indigo-500 dark:hover:text-indigo-400"
                                     >
                                         GitHub <FaGithub className="w-4 h-4" />
                                     </a>

@@ -15,9 +15,9 @@ export default function HomeCTA() {
                 </p>
 
                 <Link href="/contact">
-                    <span className="mt-4 inline-flex items-center bg-white dark:bg-black text-cyan-500 font-semibold px-6 py-3 rounded-full shadow-xl dark:shadow-cyan-950/40 hover:shadow-2xl hover:-translate-y-0.5 hover:scale-105 transition-all duration-300">
+                    <span className="mt-4 inline-flex items-center bg-white dark:bg-black text-indigo-500 font-semibold px-6 py-3 rounded-full shadow-xl dark:shadow-indigo-950/40 hover:shadow-2xl hover:-translate-y-0.5 hover:scale-105 transition-all duration-300">
                         Get In Touch
-                        <FaPaperPlane className="ml-2 text-cyan-500" />
+                        <FaPaperPlane className="ml-2 text-indigo-500" />
                     </span>
                 </Link>
             </div>

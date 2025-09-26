@@ -36,7 +36,7 @@ export default function HomeServices() {
                     Our Services
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-center text-lg sm:text-xl max-w-2xl">
-                    At <span className="text-cyan-500 font-semibold">Wizaura</span>, we deliver a range of digital solutions to help your business thrive online.
+                    At <span className="text-indigo-500 font-semibold">Wizaura</span>, we deliver a range of digital solutions to help your business thrive online.
                 </p>
 
                 {/* Services Grid */}
@@ -46,7 +46,7 @@ export default function HomeServices() {
                             key={index}
                             className="bg-white dark:bg-gray-800 rounded-xl p-6 flex flex-col items-center text-center shadow-lg hover:shadow-xl transition-shadow duration-300"
                         >
-                            <h3 className="text-xl font-semibold text-cyan-500 mb-2 flex items-center">
+                            <h3 className="text-xl font-semibold text-indigo-500 mb-2 flex items-center">
                                 <span className="mr-4">{service.icon}</span>
                                 {service.title}
                             </h3>
@@ -57,7 +57,7 @@ export default function HomeServices() {
                     ))}
                 </div>
                 <Link href="/services" className="mt-2 sm:mt-4">
-                    <span className="flex items-center bg-cyan-600 hover:bg-cyan-700 dark:bg-cyan-500 dark:hover:bg-cyan-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300">
+                    <span className="flex items-center bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300">
                         See All Services
                         <FaArrowRight className="ml-2" />
                     </span>

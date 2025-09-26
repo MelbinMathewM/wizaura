@@ -24,7 +24,7 @@ export default function Navbar() {
                 <div className="flex items-center">
                     <Link
                         href="#home"
-                        className="text-2xl font-bold text-cyan-600 dark:text-cyan-400"
+                        className="text-2xl font-bold text-indigo-600 dark:text-indigo-400"
                     >
                         Wizaura
                     </Link>
@@ -40,8 +40,8 @@ export default function Navbar() {
                                     <Link
                                         href={link.href}
                                         className={`font-medium transition ${isActive
-                                            ? "text-cyan-600 font-semibold dark:text-cyan-400"
-                                            : "text-cyan-500 hover:text-cyan-600 dark:text-cyan-500 dark:hover:text-cyan-400"
+                                            ? "text-indigo-600 font-semibold dark:text-indigo-400"
+                                            : "text-indigo-500 hover:text-indigo-600 dark:text-indigo-500 dark:hover:text-indigo-400"
                                             }`}
                                     >
                                         {link.name}
@@ -59,7 +59,7 @@ export default function Navbar() {
                     <ThemeSwitcher />
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="text-cyan-500 dark:text-cyan-400 focus:outline-none text-2xl"
+                        className="text-indigo-500 dark:text-indigo-400 focus:outline-none text-2xl"
                     >
                         {isOpen ? "✕" : "☰"}
                     </button>
@@ -76,8 +76,8 @@ export default function Navbar() {
                                 key={link.name}
                                 href={link.href}
                                 className={`font-medium transition ${isActive
-                                    ? "text-cyan-600 font-semibold dark:text-cyan-400"
-                                    : "text-cyan-500 hover:text-cyan-600 dark:text-cyan-500 dark:hover:text-cyan-400"
+                                    ? "text-indigo-600 font-semibold dark:text-indigo-400"
+                                    : "text-indigo-500 hover:text-indigo-600 dark:text-indigo-500 dark:hover:text-indigo-400"
                                     }`}
                                 onClick={() => setIsOpen(false)}
                             >

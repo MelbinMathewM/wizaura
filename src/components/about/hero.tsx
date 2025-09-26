@@ -3,7 +3,7 @@ export default function AboutHero() {
         <section className="relative w-full flex items-center justify-center px-6 sm:px-12 py-6 sm:py-12 bg-white dark:bg-black transition-colors duration-500">
             <div className="max-w-3xl text-center">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">
-                    About <span className="text-cyan-600 dark:text-cyan-400">Wizaura</span>
+                    About <span className="text-indigo-600 dark:text-indigo-400">Wizaura</span>
                 </h1>
 
                 <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">

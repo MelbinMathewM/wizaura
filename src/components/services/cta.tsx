@@ -12,13 +12,13 @@ export default function ServicesCTA() {
                 </h2>
 
                 <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-3xl leading-relaxed">
-                    At <span className="font-semibold text-cyan-500">Wizaura</span>, we combine creativity, technology, and strategy to deliver websites and applications that not only look stunning but also perform seamlessly. Whether you need a full-stack solution, a responsive frontend, or real-time features, we&apos;ve got you covered.
+                    At <span className="font-semibold text-indigo-500">Wizaura</span>, we combine creativity, technology, and strategy to deliver websites and applications that not only look stunning but also perform seamlessly. Whether you need a full-stack solution, a responsive frontend, or real-time features, we&apos;ve got you covered.
                 </p>
 
                 <Link href="/contact">
-                    <span className="mt-2 sm:mt-4 inline-flex items-center bg-white dark:bg-black text-cyan-500 font-semibold px-6 py-3 rounded-full shadow-xl dark:shadow-cyan-950/40 hover:shadow-2xl hover:-translate-y-0.5 hover:scale-105 transition-all duration-300">
+                    <span className="mt-2 sm:mt-4 inline-flex items-center bg-white dark:bg-black text-indigo-500 font-semibold px-6 py-3 rounded-full shadow-xl dark:shadow-indigo-950/40 hover:shadow-2xl hover:-translate-y-0.5 hover:scale-105 transition-all duration-300">
                         Get In Touch
-                        <FaPaperPlane className="ml-2 text-cyan-500" />
+                        <FaPaperPlane className="ml-2 text-indigo-500" />
                     </span>
                 </Link>
             </div>

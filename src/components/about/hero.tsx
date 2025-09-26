@@ -1,11 +1,15 @@
+import Image from "next/image";
+
 export default function AboutHero() {
     return (
         <section className="relative w-full flex items-center px-6 sm:px-12 py-14 bg-white dark:bg-black transition-colors duration-500">
             <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center md:items-center justify-between gap-12 w-full">
                 {/* Logo Side */}
                 <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-                    <img
-                        src="/logo.png" // Replace with your logo path
+                    <Image
+                        height={280}
+                        width={280}
+                        src="/logo.png"
                         alt="Wizaura Logo"
                         className="w-48 sm:w-64 md:w-72 object-contain"
                     />

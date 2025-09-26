@@ -9,10 +9,10 @@ export default function ContactHero() {
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-4">
                 Have a project in mind, or just want to say hello?
-                We'd love to hear from you. Reach out and let's start building something amazing together.
+                We&apos;d love to hear from you. Reach out and let&apos;s start building something amazing together.
             </p>
             <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl">
-                Whether it's a website, web app, or mobile solution, our team at <span className="font-semibold">Wizaura</span> is ready to help bring your ideas to life.
+                Whether it&apos;s a website, web app, or mobile solution, our team at <span className="font-semibold">Wizaura</span> is ready to help bring your ideas to life.
             </p>
         </section>
     );

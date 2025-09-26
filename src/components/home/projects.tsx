@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -33,7 +34,7 @@ export default function HomeProjects() {
                     Projects <span className="text-cyan-500">Glimpse</span>
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-center text-lg sm:text-xl max-w-2xl">
-                    Here's a glimpse of some of the projects we've worked on. We combine{" "}
+                    Here&apos;s a glimpse of some of the projects we&apos;ve worked on. We combine{" "}
                     <span className="text-cyan-500 font-semibold">creativity</span> and{" "}
                     <span className="text-cyan-500 font-semibold">technology</span> to deliver impactful solutions.
                 </p>
@@ -45,7 +46,9 @@ export default function HomeProjects() {
                             key={index}
                             className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg dark:shadow-gray-800 hover:shadow-2xl hover:scale-105 transition-all duration-500 cursor-pointer"
                         >
-                            <img
+                            <Image
+                                width={280}
+                                height={280}
                                 src={project.image}
                                 alt={project.title}
                                 className="w-full object-cover"

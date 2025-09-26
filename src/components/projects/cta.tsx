@@ -11,7 +11,7 @@ export default function ProjectsCTA() {
                     Inspired by Our Work?
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-2xl">
-                    If you like what you see, let's collaborate and bring your project ideas to life. We deliver modern, scalable, and user-friendly solutions.
+                    If you like what you see, let&apos;s collaborate and bring your project ideas to life. We deliver modern, scalable, and user-friendly solutions.
                 </p>
 
                 <Link href="/contact">

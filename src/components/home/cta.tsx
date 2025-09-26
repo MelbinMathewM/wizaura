@@ -11,7 +11,7 @@ export default function HomeCTA() {
                     Ready to Build Something Amazing?
                 </h2>
                 <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-2xl">
-                    Let's work together to create a modern web or mobile application that elevates your business.
+                    Let&apos;s work together to create a modern web or mobile application that elevates your business.
                 </p>
 
                 <Link href="/contact">

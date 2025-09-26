@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AboutTeam() {
     const teamMembers = [
         {
@@ -47,7 +49,9 @@ export default function AboutTeam() {
                         key={member.name}
                         className="bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1 p-6 text-center"
                     >
-                        <img
+                        <Image
+                            width={280}
+                            height={280}
                             src={member.img}
                             alt={member.name}
                             className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"

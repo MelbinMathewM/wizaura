@@ -11,7 +11,7 @@ export default function ProjectsHero() {
                     Our Projects
                 </h1>
                 <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base md:text-lg max-w-3xl leading-relaxed">
-                    Explore a selection of web and mobile applications we've built for clients across different industries. Each project demonstrates our commitment to quality, innovation, and user-centric design.
+                    Explore a selection of web and mobile applications we&apos;ve built for clients across different industries. Each project demonstrates our commitment to quality, innovation, and user-centric design.
                 </p>
 
                 <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base max-w-2xl">

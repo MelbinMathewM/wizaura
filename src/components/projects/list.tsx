@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 const projects = [
@@ -29,7 +30,9 @@ export default function ProjectsList() {
                         >
                             {/* Project Image */}
                             {project.image && (
-                                <img
+                                <Image
+                                    width={280}
+                                    height={280}
                                     src={project.image}
                                     alt={project.title}
                                     className="w-full h-48 object-cover rounded-lg mb-4"

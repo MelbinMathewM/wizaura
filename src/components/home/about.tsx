@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function HomeAbout() {
     return (
         <section
@@ -26,10 +28,12 @@ export default function HomeAbout() {
 
                 {/* Image / Illustration */}
                 <div className="flex items-center">
-                    <img
+                    <Image
+                        width={480}
+                        height={288}
                         src="/about-illu.png"
                         alt="About illustration"
-                        className="w-full max-w-md mx-auto lg:mx-0"
+                        className="max-w-md mx-auto lg:mx-0"
                     />
                 </div>
             </div>

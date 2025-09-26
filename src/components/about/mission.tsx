@@ -41,7 +41,7 @@ export default function AboutMission() {
                     <div className="bg-gray-50 dark:bg-gray-950 p-6 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
                         <h3 className="font-semibold text-xl mb-3 text-cyan-600 dark:text-cyan-400">Customer Focus</h3>
                         <p className="text-gray-700 dark:text-gray-300">
-                            Our clients' success is our top priority in every project.
+                            Our clients success is our top priority in every project.
                         </p>
                     </div>
                 </div>

@@ -18,11 +18,11 @@ export default function ProjectsList() {
     return (
         <section className="w-full py-12 px-6 sm:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-3xl sm:text-4xl font-bold text-cyan-600 dark:text-cyan-400 mb-12 text-center">
+                <h2 className="text-3xl sm:text-4xl font-bold text-cyan-600 dark:text-cyan-400 mb-4 sm:mb-12 text-center">
                     Featured Projects
                 </h2>
 
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
                     {projects.map((project, index) => (
                         <div
                             key={index}

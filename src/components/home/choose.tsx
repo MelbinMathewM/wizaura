@@ -5,22 +5,22 @@ import { FaCheckCircle, FaRocket, FaUsers, FaClock } from "react-icons/fa";
 export default function HomeChoose() {
     const features = [
         {
-            icon: <FaRocket size={36} className="text-cyan-500" />,
+            icon: <FaRocket size={24} className="text-cyan-500" />,
             title: "Modern Technology",
             description: "We use the latest tools and frameworks to deliver high-quality digital solutions.",
         },
         {
-            icon: <FaUsers size={36} className="text-cyan-500" />,
+            icon: <FaUsers size={24} className="text-cyan-500" />,
             title: "Expert Team",
             description: "Our team combines creativity and technical expertise to solve complex challenges.",
         },
         {
-            icon: <FaCheckCircle size={36} className="text-cyan-500" />,
+            icon: <FaCheckCircle size={24} className="text-cyan-500" />,
             title: "Trustworthy",
             description: "We ensure clarity, honesty, and transparency for consistently excellent results.",
         },
         {
-            icon: <FaClock size={36} className="text-cyan-500" />,
+            icon: <FaClock size={24} className="text-cyan-500" />,
             title: "Timely Delivery",
             description: "We respect deadlines and deliver projects efficiently without compromising quality.",
         },
@@ -43,14 +43,14 @@ export default function HomeChoose() {
                 </p>
 
                 {/* Features Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 w-full">
                     {features.map((feature, index) => (
                         <div
                             key={index}
                             className="bg-white dark:bg-gray-900 rounded-xl p-6 flex flex-col items-center text-center shadow-lg hover:shadow-2xl dark:hover:shadow-gray-900 transition-all duration-300"
                         >
-                            <div className="mb-4">{feature.icon}</div>
-                            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                            <h3 className="text-xl font-semibold text-cyan-500 mb-2 flex items-center">
+                                <span className="mr-4">{feature.icon}</span>
                                 {feature.title}
                             </h3>
                             <p className="text-gray-600 dark:text-gray-300 text-base">

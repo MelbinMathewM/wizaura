@@ -33,8 +33,8 @@ export default function AboutTeam() {
     ];
 
     return (
-        <section className="py-20 px-6 sm:px-12 lg:px-24 bg-white dark:bg-gray-900 transition-colors duration-300">
-            <div className="text-center mb-16">
+        <section className="py-12 px-6 sm:px-12 lg:px-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+            <div className="text-center mb-8 sm:mb-16">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-600 dark:text-cyan-400">
                     Meet Our Team
                 </h2>
@@ -43,7 +43,7 @@ export default function AboutTeam() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-10 max-w-6xl mx-auto">
                 {teamMembers.map((member) => (
                     <div
                         key={member.name}

@@ -28,7 +28,7 @@ export default function HomeProjects() {
             id="projects"
             className="w-full py-12 px-6 sm:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900/98 transition-colors duration-500"
         >
-            <div className="max-w-6xl mx-auto flex flex-col items-center gap-8">
+            <div className="max-w-6xl mx-auto flex flex-col items-center gap-4 sm:gap-8">
                 {/* Heading */}
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-100 text-center">
                     Projects <span className="text-cyan-500">Glimpse</span>

@@ -7,7 +7,7 @@ export default function HomeHero() {
         <section className="relative w-full min-h-screen overflow-hidden">
             <div className="absolute inset-0 flex flex-col justify-center bg-white dark:bg-black items-center text-center px-6 sm:px-12 pt-16 sm:pt-12 z-10">
 
-                <h1 className="text-3xl sm:text-6xl font-extrabold tracking-tight text-cyan-800 dark:text-cyan-600">
+                <h1 className="text-6xl lg:text-7xl font-extrabold tracking-tight text-cyan-800 dark:text-cyan-600">
                     Wizaura
                 </h1>
 

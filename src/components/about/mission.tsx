@@ -2,7 +2,7 @@ export default function AboutMission() {
     return (
         <section className="py-12 px-6 sm:px-12 lg:px-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
             {/* Mission Section */}
-            <div className="text-center mb-12">
+            <div className="text-center mb-6 sm:mb-12">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-cyan-600 dark:text-cyan-400">
                     Our Mission
                 </h2>
@@ -16,10 +16,10 @@ export default function AboutMission() {
 
             {/* Core Values Section */}
             <div className="text-center">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-cyan-600 dark:text-cyan-400">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-12 text-cyan-600 dark:text-cyan-400">
                     Our Core Values
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-10 max-w-6xl mx-auto">
                     <div className="bg-gray-50 dark:bg-gray-950 p-6 rounded-xl shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
                         <h3 className="font-semibold text-xl mb-3 text-cyan-600 dark:text-cyan-400">Innovation</h3>
                         <p className="text-gray-700 dark:text-gray-300">

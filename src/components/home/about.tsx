@@ -11,7 +11,7 @@ export default function HomeAbout() {
             <h2 className="text-3xl text-center sm:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6">
                 About <span className="text-cyan-500">Wizaura</span>
             </h2>
-            <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+            <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-6 sm:gap-12">
                 {/* Text */}
                 <div className="flex-1 text-center lg:text-left">
                     <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg sm:text-xl">
@@ -26,14 +26,13 @@ export default function HomeAbout() {
                     </p>
                 </div>
 
-                {/* Image / Illustration */}
                 <div className="flex items-center">
                     <Image
-                        width={480}
+                        width={288}
                         height={288}
                         src="/about-illu.png"
                         alt="About illustration"
-                        className="max-w-md mx-auto lg:mx-0"
+                        className="w-full max-w-md mx-auto lg:mx-0"
                     />
                 </div>
             </div>

@@ -55,17 +55,17 @@ export default function ContactForm() {
     };
 
     return (
-        <section className="w-full py-20 px-6 sm:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
+        <section className="w-full py-12 px-6 sm:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-2xl sm:text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-3 text-center">
                     Send Us a Message
                 </h2>
-                <p className="text-gray-700 dark:text-gray-300 text-center mb-8 max-w-2xl mx-auto">
+                <p className="text-gray-700 dark:text-gray-300 text-center mb-4 sm:mb-8 max-w-2xl mx-auto">
                     Fill out the form below and our team will get back to you as soon as possible.
                 </p>
 
-                <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 sm:gap-6">
+                    <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                         <div>
                             <input
                                 type="text"

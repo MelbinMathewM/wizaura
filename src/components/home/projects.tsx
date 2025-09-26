@@ -1,0 +1,75 @@
+"use client";
+
+import Link from "next/link";
+import { FaArrowRight } from "react-icons/fa";
+
+export default function HomeProjects() {
+    const projects = [
+        {
+            title: "DrChiller",
+            image: "/drchiller_landing.webp",
+            description: "An online platform for HVAC & chiller services with seamless booking and expert support.",
+        },
+        {
+            title: "E-learning Platform",
+            image: "/drchiller_landing.webp",
+            description: "Interactive platform for online courses and tutorials.",
+        },
+        {
+            title: "Portfolio Website",
+            image: "/drchiller_landing.webp",
+            description: "Personal portfolio showcasing projects and skills.",
+        },
+    ];
+
+    return (
+        <section
+            id="projects"
+            className="w-full py-12 px-6 sm:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900/98 transition-colors duration-500"
+        >
+            <div className="max-w-6xl mx-auto flex flex-col items-center gap-8">
+                {/* Heading */}
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-100 text-center">
+                    Projects <span className="text-cyan-500">Glimpse</span>
+                </h2>
+                <p className="text-gray-600 dark:text-gray-300 text-center text-lg sm:text-xl max-w-2xl">
+                    Here's a glimpse of some of the projects we've worked on. We combine{" "}
+                    <span className="text-cyan-500 font-semibold">creativity</span> and{" "}
+                    <span className="text-cyan-500 font-semibold">technology</span> to deliver impactful solutions.
+                </p>
+
+                {/* Projects Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                    {projects.map((project, index) => (
+                        <div
+                            key={index}
+                            className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg dark:shadow-gray-800 hover:shadow-2xl hover:scale-105 transition-all duration-500 cursor-pointer"
+                        >
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                className="w-full object-cover"
+                            />
+                            <div className="p-4">
+                                <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
+                                    {project.title}
+                                </h3>
+                                <p className="text-gray-600 dark:text-gray-300 text-base">
+                                    {project.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* CTA */}
+                <Link href="/projects" className="mt-4">
+                    <span className="flex items-center bg-cyan-600 hover:bg-cyan-700 dark:bg-cyan-500 dark:hover:bg-cyan-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300">
+                        See All Projects
+                        <FaArrowRight className="ml-2" />
+                    </span>
+                </Link>
+            </div>
+        </section>
+    );
+}

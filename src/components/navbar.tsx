@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import ThemeSwitcher from "./ThemeToggle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation"; // for active page
+import Image from "next/image";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
 
     const navLinks = [
@@ -17,14 +19,41 @@ export default function Navbar() {
         { name: "Contact", href: "/contact" },
     ];
 
+    useEffect(() => {
+        if (pathname !== "/") return; // apply only on home page
+
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20); // change bg after scrolling 20px
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [pathname]);
+
     return (
-        <nav className="w-full fixed top-0 left-0 z-50 bg-white/40 dark:bg-black/40 dark:border-b dark:border-gray-900 backdrop-blur-md shadow-md transition-colors duration-300">
+        <nav
+            className={`w-full fixed top-0 left-0 z-50 transition-all duration-500 
+        ${pathname === "/" && !isScrolled
+                    ? "bg-transparent shadow-none"
+                    : "bg-white dark:bg-black dark:border-b dark:border-gray-900 shadow-md backdrop-blur-md"
+                }`}
+        >
             <div className="max-w-7xl mx-auto px-6 sm:px-8 flex justify-between items-center h-16">
                 {/* Logo */}
-                <div className="flex items-center">
+                <div className="flex items-center space-x-1">
+                    {/* Logo Image */}
+                    <Image
+                        src="/logo.png"
+                        alt="Wizaura Logo"
+                        width={40}
+                        height={40}
+                        className="rounded-full"
+                    />
+
+                    {/* Brand Name */}
                     <Link
                         href="#home"
-                        className="text-2xl font-bold text-indigo-600 dark:text-indigo-400"
+                        className="text-2xl font-bold text-teal-600 dark:text-teal-400"
                     >
                         Wizaura
                     </Link>
@@ -40,8 +69,8 @@ export default function Navbar() {
                                     <Link
                                         href={link.href}
                                         className={`font-medium transition ${isActive
-                                            ? "text-indigo-600 font-semibold dark:text-indigo-400"
-                                            : "text-indigo-500 hover:text-indigo-600 dark:text-indigo-500 dark:hover:text-indigo-400"
+                                            ? "text-teal-600 font-semibold dark:text-teal-400"
+                                            : "text-teal-500 hover:text-teal-600 dark:text-teal-500 dark:hover:text-teal-400"
                                             }`}
                                     >
                                         {link.name}
@@ -59,7 +88,7 @@ export default function Navbar() {
                     <ThemeSwitcher />
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="text-indigo-500 dark:text-indigo-400 focus:outline-none text-2xl"
+                        className="text-teal-500 dark:text-indigo-400 focus:outline-none text-2xl"
                     >
                         {isOpen ? "✕" : "☰"}
                     </button>
@@ -76,8 +105,8 @@ export default function Navbar() {
                                 key={link.name}
                                 href={link.href}
                                 className={`font-medium transition ${isActive
-                                    ? "text-indigo-600 font-semibold dark:text-indigo-400"
-                                    : "text-indigo-500 hover:text-indigo-600 dark:text-indigo-500 dark:hover:text-indigo-400"
+                                    ? "text-teal-600 font-semibold dark:text-teal-400"
+                                    : "text-teal-500 hover:text-teal-600 dark:text-teal-500 dark:hover:text-teal-400"
                                     }`}
                                 onClick={() => setIsOpen(false)}
                             >

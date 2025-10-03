@@ -23,7 +23,7 @@ export default function ThemeToggle() {
 
     return (
         <button
-            className="transition text-indigo-500"
+            className="transition text-teal-500"
             onClick={toggleTheme}
         >
             {isDark ? <BiSun /> : <BiMoon />}

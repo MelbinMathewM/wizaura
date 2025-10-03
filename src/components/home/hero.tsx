@@ -1,41 +1,220 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { FaPhoneAlt, FaServicestack } from "react-icons/fa";
 
 export default function HomeHero() {
-    return (
-        <section className="relative w-full min-h-screen overflow-hidden">
-            <div className="absolute inset-0 flex flex-col justify-center bg-white dark:bg-black items-center text-center px-6 sm:px-12 pt-16 sm:pt-12 z-10">
+  const circleSize = 400;
+  const damping = 0.998;
+  const frequency = 0.5;
 
-                <h1 className="text-6xl lg:text-7xl font-extrabold tracking-tight text-indigo-800 dark:text-indigo-600">
-                    Wizaura
-                </h1>
+  const circleRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const starCanvasRef = useRef<HTMLCanvasElement>(null);
 
-                {/* Slogan */}
-                <p className="text-xl sm:text-2xl text-indigo-500 dark:text-indigo-300 font-semibold">
-                    The Aura of Innovation
-                </p>
+  const amplitudeRef = useRef(0);
+  const phaseRef = useRef(0);
+  const lastTimeRef = useRef(0);
 
-                <p className="mt-8 text-lg sm:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl">
-                    We craft modern websites, apps, and digital solutions tailored to your business.
-                    Bringing together innovation, creativity, and quality.
-                </p>
+  const [curve, setCurve] = useState({
+    leftX: 0,
+    rightX: 0,
+    baseY: 0,
+    curveHeight: 0,
+    width: 0,
+    height: 0,
+  });
 
-                <div className="mt-6 flex gap-4 flex-wrap justify-center w-full">
-                    <Link
-                        href="/services"
-                        className="bg-indigo-100 border border-indigo-100 dark:bg-indigo-900 dark:border-indigo-900 text-indigo-700 dark:text-gray-300 px-6 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg hover:opacity-90 transition"
-                    >
-                        Our Services
-                    </Link>
-                    <a
-                        href="/contact"
-                        className="border border-indigo-600 text-indigo-600 dark:text-indigo-600 dark:border-indigo-900 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-600 dark:hover:bg-indigo-900 hover:text-white transition"
-                    >
-                        Contact Us
-                    </a>
-                </div>
-            </div>
-        </section>
-    );
+  const stars: { x: number; y: number; size: number; dx: number; dy: number }[] =
+    [];
+
+  // Initialize U curve
+  useEffect(() => {
+    const updateBounds = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      const leftX = 0;
+      const rightX = width;
+      const baseY = height * 0.6 - 20;
+      const curveHeight = 200;
+
+      setCurve({ leftX, rightX, baseY, curveHeight, width, height });
+
+      amplitudeRef.current = (rightX - leftX) / 2 - 50;
+      phaseRef.current = 0;
+      lastTimeRef.current = performance.now();
+    };
+
+    updateBounds();
+    window.addEventListener("resize", updateBounds);
+    return () => window.removeEventListener("resize", updateBounds);
+  }, []);
+
+  // Animate rolling along U curve
+  useEffect(() => {
+    const tick = (now: number) => {
+      const dt = (now - lastTimeRef.current) / 1000;
+      lastTimeRef.current = now;
+
+      const { leftX, rightX, baseY, curveHeight, height } = curve;
+      if (!leftX && !rightX) return;
+
+      const centerX = (leftX + rightX) / 2;
+
+      phaseRef.current += dt * frequency * Math.PI * 2;
+      amplitudeRef.current *= damping;
+
+      const x = centerX + amplitudeRef.current * Math.sin(phaseRef.current);
+      const t = (x - centerX) / ((rightX - leftX) / 2);
+      const y = baseY - curveHeight * (t * t);
+      const rotation = Math.sin(phaseRef.current) * 20;
+
+      if (circleRef.current) {
+        circleRef.current.style.left = `${x - circleSize / 2}px`;
+        circleRef.current.style.bottom = `${height - y - circleSize / 2 + 50}px`;
+        circleRef.current.style.transform = `rotate(${rotation}deg)`;
+      }
+
+      if (Math.abs(amplitudeRef.current) > 0.5) {
+        rafRef.current = requestAnimationFrame(tick);
+      }
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [curve]);
+
+  // Floating stars above the U curve
+  useEffect(() => {
+    const canvas = starCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Initialize stars
+    for (let i = 0; i < 80; i++) {
+      stars.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * (window.innerHeight * 0.6),
+        size: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 0.3,
+        dy: (Math.random() - 0.5) * 0.3,
+      });
+    }
+
+    const animateStars = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      stars.forEach((star) => {
+        star.x += star.dx;
+        star.y += star.dy;
+
+        if (star.x > canvas.width) star.x = 0;
+        if (star.x < 0) star.x = canvas.width;
+        if (star.y > canvas.height * 0.6) star.y = 0; // only above U
+        if (star.y < 0) star.y = canvas.height * 0.6;
+
+        ctx.fillStyle = "rgba(20,184,166,0.8)";
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animateStars);
+    };
+
+    animateStars();
+  }, []);
+
+  return (
+    <section className="relative w-full min-h-screen flex items-center justify-center bg-black overflow-hidden">
+      {/* Star canvas */}
+      <canvas
+        ref={starCanvasRef}
+        className="absolute top-0 left-0 w-full h-full pointer-events-none"
+      />
+
+      {/* Gradient background under curve */}
+      <svg className="absolute top-13 left-0 w-full h-full">
+        <defs>
+          <linearGradient id="uFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgba(20,184,166,0.15)" />
+            <stop offset="100%" stopColor="rgba(0,0,0,0.8)" />
+          </linearGradient>
+
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <path
+          d={`M ${curve.leftX} ${curve.baseY} 
+              Q ${(curve.leftX + curve.rightX) / 2} ${curve.baseY + curve.curveHeight}
+              ${curve.rightX} ${curve.baseY} 
+              L ${curve.rightX} ${curve.height} 
+              L ${curve.leftX} ${curve.height} Z`}
+          fill="url(#uFill)"
+          opacity="0.9"
+        />
+
+        <path
+          d={`M ${curve.leftX} ${curve.baseY} 
+              Q ${(curve.leftX + curve.rightX) / 2} ${curve.baseY + curve.curveHeight}
+              ${curve.rightX} ${curve.baseY}`}
+          stroke="teal"
+          strokeWidth="4"
+          fill="transparent"
+          filter="url(#glow)"
+        />
+      </svg>
+
+      {/* Wizaura Circle */}
+      <div
+        ref={circleRef}
+        className="absolute w-[400px] h-[400px] flex items-center justify-center"
+      >
+        <div className="absolute w-[400px] h-[400px] border border-teal-400 rounded-full opacity-50" />
+        <div className="absolute w-[380px] h-[380px] border-8 border-teal-300 rounded-full opacity-30" />
+        <div className="relative z-20 bg-black rounded-full flex flex-col items-center justify-center text-center px-6">
+          <Image src={"/logo.png"} alt="logo" width={120} height={120} />
+          <h1 className="text-6xl lg:text-7xl font-extrabold text-white mb-2">
+            Wizaura
+          </h1>
+          <p className="text-xl sm:text-2xl font-semibold text-teal-400 mb-6">
+            The Aura of Innovation
+          </p>
+        </div>
+      </div>
+
+      {/* Edge Buttons */}
+      <Link
+        href="/services"
+        className="absolute bottom-6 left-6 w-20 h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 text-sm font-semibold"
+      >
+        <FaServicestack className="mb-1 text-lg" />
+        Services
+      </Link>
+
+      {/* Contact Button */}
+      <Link
+        href="/contact"
+        className="absolute bottom-6 right-6 w-20 h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 text-sm font-semibold"
+      >
+        <FaPhoneAlt className="mb-1 text-lg" />
+        Contact
+      </Link>
+    </section>
+  );
 }

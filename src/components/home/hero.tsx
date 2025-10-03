@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { FaPhoneAlt, FaServicestack } from "react-icons/fa";
+import { FaPhoneAlt, FaPlay, FaServicestack } from "react-icons/fa";
 
 export default function HomeHero() {
   const circleSize = 400;
@@ -26,32 +26,36 @@ export default function HomeHero() {
     width: 0,
     height: 0,
   });
+  const [isOscillate, setIsOscillate] = useState<boolean>(false);
 
   const stars: { x: number; y: number; size: number; dx: number; dy: number }[] =
     [];
 
+  const updateBounds = () => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    const leftX = 0;
+    const rightX = width;
+    const baseY = height * 0.6 - 20;
+    const curveHeight = 200;
+
+    setCurve({ leftX, rightX, baseY, curveHeight, width, height });
+
+    amplitudeRef.current = (rightX - leftX) / 2 - 50;
+    phaseRef.current = 0;
+    lastTimeRef.current = performance.now();
+  };
   // Initialize U curve
   useEffect(() => {
-    const updateBounds = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-
-      const leftX = 0;
-      const rightX = width;
-      const baseY = height * 0.6 - 20;
-      const curveHeight = 200;
-
-      setCurve({ leftX, rightX, baseY, curveHeight, width, height });
-
-      amplitudeRef.current = (rightX - leftX) / 2 - 50;
-      phaseRef.current = 0;
-      lastTimeRef.current = performance.now();
-    };
-
     updateBounds();
     window.addEventListener("resize", updateBounds);
     return () => window.removeEventListener("resize", updateBounds);
   }, []);
+
+  const startOscillation = () => {
+    updateBounds();
+  }
 
   // Animate rolling along U curve
   useEffect(() => {
@@ -73,7 +77,8 @@ export default function HomeHero() {
       const rotation = Math.sin(phaseRef.current) * 20;
 
       if (circleRef.current) {
-        circleRef.current.style.left = `${x - circleSize / 2}px`;
+        const circleWidth = circleRef.current.offsetWidth;
+        circleRef.current.style.left = `${x - circleWidth / 2}px`;
         circleRef.current.style.bottom = `${height - y - circleSize / 2 + 50}px`;
         circleRef.current.style.transform = `rotate(${rotation}deg)`;
       }
@@ -119,7 +124,7 @@ export default function HomeHero() {
 
         if (star.x > canvas.width) star.x = 0;
         if (star.x < 0) star.x = canvas.width;
-        if (star.y > canvas.height * 0.6) star.y = 0; // only above U
+        if (star.y > canvas.height * 0.6) star.y = 0;
         if (star.y < 0) star.y = canvas.height * 0.6;
 
         ctx.fillStyle = "rgba(20,184,166,0.8)";
@@ -135,7 +140,7 @@ export default function HomeHero() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center bg-black overflow-hidden">
+    <section className="relative w-full min-h-screen flex items-center justify-center bg-gray-950 overflow-hidden">
       {/* Star canvas */}
       <canvas
         ref={starCanvasRef}
@@ -146,8 +151,8 @@ export default function HomeHero() {
       <svg className="absolute top-13 left-0 w-full h-full">
         <defs>
           <linearGradient id="uFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="rgba(20,184,166,0.15)" />
-            <stop offset="100%" stopColor="rgba(0,0,0,0.8)" />
+            <stop offset="0%" stopColor="rgba(20, 58, 184, 0.15)" />
+            <stop offset="100%" stopColor="rgba(81, 151, 243, 0.8)" />
           </linearGradient>
 
           <filter id="glow">
@@ -166,7 +171,7 @@ export default function HomeHero() {
               L ${curve.rightX} ${curve.height} 
               L ${curve.leftX} ${curve.height} Z`}
           fill="url(#uFill)"
-          opacity="0.9"
+          opacity="0.8"
         />
 
         <path
@@ -183,16 +188,16 @@ export default function HomeHero() {
       {/* Wizaura Circle */}
       <div
         ref={circleRef}
-        className="absolute w-[400px] h-[400px] flex items-center justify-center"
+        className="absolute w-[250px] h-[250px] shadow-gray-900 shadow-xl sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] bg-black rounded-full flex items-center justify-center"
       >
-        <div className="absolute w-[400px] h-[400px] border border-teal-400 rounded-full opacity-50" />
-        <div className="absolute w-[380px] h-[380px] border-8 border-teal-300 rounded-full opacity-30" />
-        <div className="relative z-20 bg-black rounded-full flex flex-col items-center justify-center text-center px-6">
-          <Image src={"/logo.png"} alt="logo" width={120} height={120} />
-          <h1 className="text-6xl lg:text-7xl font-extrabold text-white mb-2">
+        <div className="absolute w-full h-full border border-teal-400 rounded-full opacity-50" />
+        <div className="absolute w-[90%] h-[90%] border-8 border-teal-300 rounded-full opacity-30" />
+        <div className="relative z-20 flex flex-col items-center justify-center text-center px-3 sm:px-6py-2 sm:py-4">
+          <Image src={"/logo.png"} alt="logo" width={80} height={80} className="sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px]" />
+          <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold text-white mb-1 sm:mb-2">
             Wizaura
           </h1>
-          <p className="text-xl sm:text-2xl font-semibold text-teal-400 mb-6">
+          <p className="text-sm sm:text-lg lg:text-xl font-semibold text-teal-400 mb-1 sm:mb-6">
             The Aura of Innovation
           </p>
         </div>
@@ -201,20 +206,26 @@ export default function HomeHero() {
       {/* Edge Buttons */}
       <Link
         href="/services"
-        className="absolute bottom-6 left-6 w-20 h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 text-sm font-semibold"
+        className="absolute bottom-10 sm:bottom-6 left-4 sm:left-6 w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 text-xs sm:text-sm font-semibold"
       >
-        <FaServicestack className="mb-1 text-lg" />
+        <FaServicestack className="mb-1 text-base sm:text-lg" />
         Services
       </Link>
 
       {/* Contact Button */}
       <Link
         href="/contact"
-        className="absolute bottom-6 right-6 w-20 h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 text-sm font-semibold"
+        className="absolute bottom-10 sm:bottom-6 right-4 sm:right-6 w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 text-xs sm:text-sm font-semibold"
       >
-        <FaPhoneAlt className="mb-1 text-lg" />
+        <FaPhoneAlt className="mb-1 text-base sm:text-lg" />
         Contact
       </Link>
+      <button
+        onClick={startOscillation}
+        className="absolute bottom-24 sm:bottom-20 left-1/2 sm:left-26/51 -translate-x-1/2 cursor-pointer text-teal-500 shadow-lg hover:scale-105 transition-transform duration-300 text-sm font-semibold flex items-center gap-2"
+      >
+        <FaPlay />
+      </button>
     </section>
   );
 }

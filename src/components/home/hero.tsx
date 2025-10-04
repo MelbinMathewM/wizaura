@@ -26,14 +26,14 @@ export default function HomeHero() {
     width: 0,
     height: 0,
   });
-  const [isOscillate, setIsOscillate] = useState<boolean>(false);
 
   const stars: { x: number; y: number; size: number; dx: number; dy: number }[] =
     [];
 
   const updateBounds = () => {
     const width = window.innerWidth;
-    const height = window.innerHeight;
+    const height =
+      window.visualViewport?.height ?? window.innerHeight;
 
     const leftX = 0;
     const rightX = width;
@@ -49,8 +49,13 @@ export default function HomeHero() {
   // Initialize U curve
   useEffect(() => {
     updateBounds();
-    window.addEventListener("resize", updateBounds);
-    return () => window.removeEventListener("resize", updateBounds);
+  window.addEventListener("resize", updateBounds);
+  window.visualViewport?.addEventListener("resize", updateBounds);
+
+  return () => {
+    window.removeEventListener("resize", updateBounds);
+    window.visualViewport?.removeEventListener("resize", updateBounds);
+  };
   }, []);
 
   const startOscillation = () => {
@@ -79,7 +84,7 @@ export default function HomeHero() {
       if (circleRef.current) {
         const circleWidth = circleRef.current.offsetWidth;
         circleRef.current.style.left = `${x - circleWidth / 2}px`;
-        circleRef.current.style.bottom = `${height - y - circleSize / 2 + 50}px`;
+        circleRef.current.style.bottom = `${height - y - circleSize / 2 + height * 0.08}px`;
         circleRef.current.style.transform = `rotate(${rotation}deg)`;
       }
 
@@ -140,7 +145,7 @@ export default function HomeHero() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center bg-gray-950 overflow-hidden">
+    <section className="relative w-full min-h-screen flex items-center justify-center bg-gray-950 overflow-hidden pb-[env(safe-area-inset-bottom)]">
       {/* Star canvas */}
       <canvas
         ref={starCanvasRef}

@@ -26,18 +26,19 @@ export default function HomeHero() {
     width: 0,
     height: 0,
   });
+  const [isOscillate, setIsOscillate] = useState<boolean>(false);
 
   const stars: { x: number; y: number; size: number; dx: number; dy: number }[] =
     [];
 
   const updateBounds = () => {
     const width = window.innerWidth;
-    const height = window.visualViewport?.height ?? window.innerHeight;
+    const height = window.innerHeight;
 
     const leftX = 0;
     const rightX = width;
     const baseY = height * 0.6 - 20;
-    const curveHeight = height * 0.30;
+    const curveHeight = 200;
 
     setCurve({ leftX, rightX, baseY, curveHeight, width, height });
 

@@ -37,7 +37,7 @@ export default function HomeHero() {
     const leftX = 0;
     const rightX = width;
     const baseY = height * 0.6 - 20;
-    const curveHeight = 200;
+    const curveHeight = height * 0.30;
 
     setCurve({ leftX, rightX, baseY, curveHeight, width, height });
 
@@ -78,7 +78,7 @@ export default function HomeHero() {
       if (circleRef.current) {
         const circleWidth = circleRef.current.offsetWidth;
         circleRef.current.style.left = `${x - circleWidth / 2}px`;
-        circleRef.current.style.bottom = `${height - y - circleSize / 2}px`;
+        circleRef.current.style.bottom = `${height - y - circleSize / 2 + 50}px`;
         circleRef.current.style.transform = `rotate(${rotation}deg)`;
       }
 

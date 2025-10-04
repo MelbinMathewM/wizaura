@@ -26,14 +26,14 @@ export default function HomeHero() {
     width: 0,
     height: 0,
   });
+  const [isOscillate, setIsOscillate] = useState<boolean>(false);
 
   const stars: { x: number; y: number; size: number; dx: number; dy: number }[] =
     [];
 
   const updateBounds = () => {
     const width = window.innerWidth;
-    const height =
-      window.visualViewport?.height ?? window.innerHeight;
+    const height = window.innerHeight;
 
     const leftX = 0;
     const rightX = width;
@@ -50,12 +50,7 @@ export default function HomeHero() {
   useEffect(() => {
     updateBounds();
     window.addEventListener("resize", updateBounds);
-    window.visualViewport?.addEventListener("resize", updateBounds);
-
-    return () => {
-      window.removeEventListener("resize", updateBounds);
-      window.visualViewport?.removeEventListener("resize", updateBounds);
-    };
+    return () => window.removeEventListener("resize", updateBounds);
   }, []);
 
   const startOscillation = () => {
@@ -84,7 +79,7 @@ export default function HomeHero() {
       if (circleRef.current) {
         const circleWidth = circleRef.current.offsetWidth;
         circleRef.current.style.left = `${x - circleWidth / 2}px`;
-        circleRef.current.style.bottom = `${height - y - circleSize / 2 + height * 0.08}px`;
+        circleRef.current.style.bottom = `${height - y - circleSize / 2 + 50}px`;
         circleRef.current.style.transform = `rotate(${rotation}deg)`;
       }
 
@@ -145,14 +140,7 @@ export default function HomeHero() {
   }, []);
 
   return (
-    <section className="
-    relative w-full 
-    h-[100vh]
-    sm:h-screen
-    flex items-center justify-center 
-    bg-gray-950 overflow-hidden 
-    pb-[env(safe-area-inset-bottom)]
-  ">
+    <section className="relative w-full h-[100vh] sm:h-screen flex items-center justify-center bg-gray-950 overflow-hidden">
       {/* Star canvas */}
       <canvas
         ref={starCanvasRef}
@@ -216,29 +204,22 @@ export default function HomeHero() {
       </div>
 
       {/* Edge Buttons */}
-      {/* Edge Buttons (Responsive Safe Position) */}
-      <div className="absolute bottom-[calc(env(safe-area-inset-bottom)+1rem)] w-full flex justify-between px-6">
-        <Link
-          href="/services"
-          className="w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center rounded-full 
-              bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 
-              transition-transform duration-300 text-xs sm:text-sm font-semibold"
-        >
-          <FaServicestack className="mb-1 text-base sm:text-lg" />
-          Services
-        </Link>
+      <Link
+        href="/services"
+        className="absolute bottom-20 sm:bottom-6 left-4 sm:left-6 w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 text-xs sm:text-sm font-semibold"
+      >
+        <FaServicestack className="mb-1 text-base sm:text-lg" />
+        Services
+      </Link>
 
-        <Link
-          href="/contact"
-          className="w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center rounded-full 
-              bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 
-              transition-transform duration-300 text-xs sm:text-sm font-semibold"
-        >
-          <FaPhoneAlt className="mb-1 text-base sm:text-lg" />
-          Contact
-        </Link>
-      </div>
-
+      {/* Contact Button */}
+      <Link
+        href="/contact"
+        className="absolute bottom-20 sm:bottom-6 right-4 sm:right-6 w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 text-xs sm:text-sm font-semibold"
+      >
+        <FaPhoneAlt className="mb-1 text-base sm:text-lg" />
+        Contact
+      </Link>
       <button
         onClick={startOscillation}
         className="absolute bottom-24 sm:bottom-20 left-1/2 sm:left-26/51 -translate-x-1/2 cursor-pointer text-teal-500 shadow-lg hover:scale-105 transition-transform duration-300 text-sm font-semibold flex items-center gap-2"

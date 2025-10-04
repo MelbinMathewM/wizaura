@@ -26,14 +26,13 @@ export default function HomeHero() {
     width: 0,
     height: 0,
   });
-  const [isOscillate, setIsOscillate] = useState<boolean>(false);
 
   const stars: { x: number; y: number; size: number; dx: number; dy: number }[] =
     [];
 
   const updateBounds = () => {
     const width = window.innerWidth;
-    const height = window.innerHeight;
+    const height = window.visualViewport?.height ?? window.innerHeight;
 
     const leftX = 0;
     const rightX = width;

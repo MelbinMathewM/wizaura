@@ -78,7 +78,7 @@ export default function HomeHero() {
       if (circleRef.current) {
         const circleWidth = circleRef.current.offsetWidth;
         circleRef.current.style.left = `${x - circleWidth / 2}px`;
-        circleRef.current.style.bottom = `${height - y - circleSize / 2 + 50}px`;
+        circleRef.current.style.bottom = `${height - y - circleSize / 2}px`;
         circleRef.current.style.transform = `rotate(${rotation}deg)`;
       }
 

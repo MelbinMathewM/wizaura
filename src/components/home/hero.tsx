@@ -96,7 +96,8 @@ export default function HomeHero() {
       <div
         ref={circleRef}
         className="absolute w-[300px] h-[300px] sm:w-[320px] sm:h-[320px] lg:w-[380px] lg:h-[380px]
-        bg-black rounded-full flex flex-col items-center justify-center shadow-2xl border-4 border-teal-800
+        bg-gradient-to-tr from-gray-900 via-gray-950 to-gray-800
+        rounded-full flex flex-col items-center justify-center shadow-2xl border-4 border-teal-800
         translate-y-[-90px] sm:translate-y-[-30px] transition-transform duration-700 hover:scale-110"
       >
         <div className="absolute inset-0 border-[10px] border-teal-300/40 rounded-full" />
@@ -130,6 +131,7 @@ export default function HomeHero() {
       <Link
         href="/services"
         className="absolute bottom-16 left-8 sm:bottom-12 sm:left-24 lg:left-30 flex flex-col items-center justify-center 
+        bg-gradient-to-tr from-gray-900 via-gray-950 to-gray-800
         w-20 h-20 sm:w-24 sm:h-24 lg:w-30 lg:h-30 rounded-full bg-black hover:bg-black text-teal-500 shadow-lg border-2 border-teal-500
         hover:scale-110 transition-transform duration-300"
       >
@@ -141,6 +143,7 @@ export default function HomeHero() {
       <Link
         href="/contact"
         className="absolute bottom-16 right-8 sm:bottom-12 sm:right-24 lg:right-30 flex flex-col items-center justify-center 
+        bg-gradient-to-tr from-gray-900 via-gray-950 to-gray-800
         w-20 h-20 sm:w-24 sm:h-24 lg:w-30 lg:h-30 rounded-full bg-black hover:bg-black text-teal-500 shadow-lg border-2 border-teal-500
         hover:scale-110 transition-transform duration-300"
       >

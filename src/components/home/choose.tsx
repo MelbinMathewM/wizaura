@@ -48,7 +48,7 @@ const WhyChooseUs = () => {
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
-                        className="text-4xl md:text-5xl mb-4 sm:mb-0 font-extrabold text-teal-600 dark:text-teal-400 leading-tight"
+                        className="text-4xl md:text-5xl mb-0 font-extrabold text-teal-600 dark:text-teal-400 leading-tight"
                     >
                         <span className="text-3xl md:text-4xl">Why Choose</span> Wizaura
                     </motion.h2>

@@ -79,7 +79,6 @@ export default function Navbar() {
                             );
                         })}
                     </ul>
-                    {/* Theme toggle for desktop */}
                     <ThemeSwitcher />
                 </div>
 
@@ -88,7 +87,7 @@ export default function Navbar() {
                     <ThemeSwitcher />
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="text-teal-500 dark:text-indigo-400 focus:outline-none text-2xl"
+                        className="text-teal-500 dark:text-teal-400 focus:outline-none text-2xl"
                     >
                         {isOpen ? "✕" : "☰"}
                     </button>

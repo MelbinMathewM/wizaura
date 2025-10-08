@@ -79,7 +79,7 @@ const HomeServices = () => {
                 >
                     <Link
                         href="/services"
-                        className="flex items-center gap-2 bg-teal-500 dark:bg-teal-400 text-white dark:text-black font-medium text-lg px-8 py-3 rounded-full 
+                        className="flex items-center gap-2 bg-teal-500 dark:bg-teal-400 text-white font-medium text-lg px-8 py-3 rounded-full 
                 transition duration-300 ease-in-out hover:bg-teal-400 dark:hover:bg-teal-300 hover:-translate-y-0.5"
                     >
                         All Services <FaArrowRight />

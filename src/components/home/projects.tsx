@@ -38,7 +38,7 @@ const HomeProjects = () => {
         <section className="bg-white dark:bg-black py-12 px-4 md:px-8 lg:px-16 text-gray-900 dark:text-white transition-colors duration-500">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <header className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 mb-8">
+                <header className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 mb-4 md:mb-8">
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
@@ -51,7 +51,7 @@ const HomeProjects = () => {
                         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
                         className="bg-teal-500 dark:bg-teal-600 text-white text-center p-6 rounded-lg text-lg font-medium h-fit md:self-center"
                     >
-                        Here&apos;s a glimpse of some of the projects we&apos;ve worked on. We combine{" "}
+                        Here's a glimpse of some of the projects we've worked on. We combine{" "}
                         <span className="font-semibold">creativity</span> and{" "}
                         <span className="font-semibold">technology</span> to deliver impactful solutions.
                     </motion.p>
@@ -59,27 +59,28 @@ const HomeProjects = () => {
 
                 {/* Cards Section */}
                 <motion.div
-                    className="relative flex flex-col md:flex-row md:justify-between gap-8 pb-6"
+                    className="relative flex flex-col md:flex-row md:justify-between gap-4 md:gap-8 pb-16"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
                 >
                     {projects.map((project, index) => {
-                        const topOffset = index === 1 ? 0 : 60;
+                        let topClass = "";
+                        if (index === 0) topClass = "md:top-16";
+                        else if (index === 1) topClass = "md:top-0";
+                        else if (index === 2) topClass = "md:top-16";
 
                         return (
                             <motion.div
                                 key={index}
                                 variants={cardVariants}
-                                className={`relative flex-1 md:max-w-[500px] h-[250px] md:h-[250px]`}
+                                className="relative flex-1 md:max-w-[500px] h-[250px] md:h-[280px]"
                             >
                                 <motion.div
                                     className={`w-full h-full border border-teal-400/30 dark:border-teal-800 rounded-xl shadow-lg flex flex-col items-center justify-center transition-transform duration-300 ease-out hover:scale-[1.03] md:absolute relative overflow-hidden
-                    bg-gradient-to-tr from-gray-200 via-gray-50 to-gray-300 dark:from-gray-900 dark:via-gray-950 dark:to-gray-800`}
-                                    style={{ top: `${topOffset}px` }}
+                                        bg-gradient-to-tr from-gray-200 via-gray-50 to-gray-300 dark:from-gray-900 dark:via-gray-950 dark:to-gray-800 ${topClass}`}
                                     whileHover={{ y: -5 }}
                                 >
-                                    {/* Image as icon */}
                                     <motion.img
                                         src={project.image}
                                         alt={project.title}
@@ -96,7 +97,6 @@ const HomeProjects = () => {
                                         {project.description}
                                     </p>
 
-                                    {/* Full project image on hover */}
                                     <motion.img
                                         src={project.image}
                                         alt={project.title}
@@ -108,16 +108,15 @@ const HomeProjects = () => {
                     })}
                 </motion.div>
 
-                {/* CTA button under the second/top card */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.3 } }}
-                    className="relative flex justify-center items-center md:justify-start mt-4 pb-12"
+                    className="relative flex justify-center md:justify-start mt-4"
                 >
                     <Link
-                        href="/services"
-                        className="flex absolute bottom-0 md:left-2/5 lg:left-3/7 items-center gap-2 bg-teal-500 dark:bg-teal-400 text-white dark:text-black font-medium text-lg px-8 py-3 rounded-full 
-            transition duration-300 ease-in-out hover:bg-teal-400 dark:hover:bg-teal-300 hover:-translate-y-0.5"
+                        href="/projects"
+                        className="absolute bottom-0 md:left-2/5 lg:left-3/7 flex items-center gap-2 bg-teal-500 dark:bg-teal-400 text-white dark:text-black font-medium text-lg px-8 py-3 rounded-full 
+                            transition duration-300 ease-in-out hover:bg-teal-400 dark:hover:bg-teal-300 hover:-translate-y-0.5"
                     >
                         All Projects <FaArrowRight />
                     </Link>

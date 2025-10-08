@@ -139,7 +139,7 @@ export default function HomeHero() {
   }, []);
 
   return (
-    <section className="relative w-full h-[100vh] sm:h-screen flex items-center justify-center bg-gray-950 overflow-hidden">
+    <section className="relative w-full h-168 sm:h-1000 sm:h-screen flex items-center justify-center bg-gray-950 overflow-hidden">
       <canvas
         ref={starCanvasRef}
         className="absolute top-0 left-0 w-full h-full pointer-events-none"

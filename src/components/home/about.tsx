@@ -21,7 +21,7 @@ const HomeAbout = () => {
     };
 
     return (
-        <section className="min-h-screen dark:bg-black py-16 px-4 sm:px-8 lg:px-16 overflow-x-hidden">
+        <section className="min-h-screen dark:bg-black pt-8 pb-16 px-4 sm:px-8 lg:px-16 overflow-x-hidden">
             <div className="max-w-7xl mx-auto">
 
                 <motion.h1
@@ -57,10 +57,10 @@ const HomeAbout = () => {
                         whileInView="visible"
                         viewport={{ once: false }}
                         variants={fadeLeft}
-                        className="bg-teal-600 p-6 md:p-8 lg:p-12 rounded-xl shadow-xl flex items-center md:col-span-7 order-1 md:order-2 md:-mt-20 relative z-10"
+                        className="bg-teal-600 p-6 md:p-9 lg:p-16 rounded-xl shadow-xl flex items-center md:col-span-7 order-1 md:order-2 md:-mt-20 relative z-10"
                     >
                         <p className="text-white text-xl font-medium leading-relaxed">
-                            At <span className="font-bold">Wizaura</span>, we create modern web and mobile applications that empower businesses to reach their full potential. From sleek websites to innovative apps, we focus on quality, usability, and cutting-edge technology to bring your ideas to life.
+                            “At <span className="font-bold">Wizaura</span>, we create sleek and user-friendly web and mobile apps that help businesses grow. We focus on quality and innovation.”
                         </p>
                     </motion.div>
 
@@ -70,7 +70,7 @@ const HomeAbout = () => {
                         whileInView="visible"
                         viewport={{ once: false }}
                         variants={fadeUp}
-                        className="bg-teal-600 p-6 md:p-12 rounded-xl shadow-xl flex items-center md:col-span-7 order-3 md:order-3 relative z-10"
+                        className="bg-teal-600 p-6 md:p-10.5 rounded-xl shadow-xl flex items-center md:col-span-7 order-3 md:order-3 relative z-10"
                     >
                         <p className="text-white text-lg text-center font-medium leading-relaxed">
                             Our team blends creativity and technical expertise to deliver digital solutions that not only look great but also perform flawlessly.
@@ -83,7 +83,7 @@ const HomeAbout = () => {
                         whileInView="visible"
                         viewport={{ once: false }}
                         variants={fadeUp}
-                        className="relative dark:bg-black h-48 md:h-64 lg:h-67 rounded-xl shadow-lg md:col-span-5 order-4 md:order-4 md:-mt-11 lg:-mt-28 overflow-hidden"
+                        className="relative dark:bg-black h-48 md:h-64 rounded-xl shadow-lg md:col-span-5 order-4 md:order-4 md:-mt-34 lg:-mt-28 overflow-hidden"
                     >
                         <Image
                             src="/about-2.png"

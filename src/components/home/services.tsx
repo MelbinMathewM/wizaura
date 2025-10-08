@@ -24,14 +24,14 @@ const HomeServices = () => {
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
-                        className="text-4xl md:text-5xl font-extrabold text-teal-500 dark:text-teal-400 leading-tight"
+                        className="text-4xl md:text-5xl font-extrabold text-teal-600 dark:text-teal-400 leading-tight"
                     >
                         Our Services
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
-                        className="bg-teal-500 dark:bg-teal-600 text-white text-center p-6 rounded-lg text-lg font-medium h-fit md:self-center"
+                        className="bg-teal-600 dark:bg-teal-600 text-white text-center p-6 rounded-lg text-lg font-medium h-fit md:self-center"
                     >
                         At Wizaura, we deliver a range of digital solutions to help your business thrive online.
                     </motion.p>

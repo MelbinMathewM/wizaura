@@ -1,41 +1,103 @@
 "use client";
 
-import Image from "next/image";
+import Image from 'next/image';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-export default function HomeAbout() {
+const HomeAbout = () => {
+    const fadeUp = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+    };
+
+    const fadeLeft = {
+        hidden: { opacity: 0, x: 50 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
+    };
+
+    const fadeRight = {
+        hidden: { opacity: 0, x: -50 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
+    };
+
     return (
-        <section
-            id="about"
-            className="w-full py-12 px-6 sm:px-12 lg:px-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-500"
-        >
-            <h2 className="text-3xl text-center sm:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6">
-                About <span className="text-indigo-500">Wizaura</span>
-            </h2>
-            <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center gap-6 sm:gap-12">
-                {/* Text */}
-                <div className="flex-1 text-center lg:text-left">
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg sm:text-xl">
-                        At <span className="text-indigo-500 font-bold">Wizaura</span>, we create modern web and mobile applications that empower
-                        businesses to reach their full potential. From sleek websites to
-                        innovative apps, we focus on quality, usability, and cutting-edge
-                        technology to bring your ideas to life.
-                    </p>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg sm:text-xl mt-4">
-                        Our team blends creativity and technical expertise to deliver digital
-                        solutions that not only look great but also perform flawlessly.
-                    </p>
-                </div>
+        <section className="min-h-screen dark:bg-black py-16 px-4 sm:px-8 lg:px-16 overflow-x-hidden">
+            <div className="max-w-7xl mx-auto">
 
-                <div className="flex items-center">
-                    <Image
-                        width={288}
-                        height={288}
-                        src="/about-illu.png"
-                        alt="About illustration"
-                        className="w-full max-w-md mx-auto lg:mx-0"
-                    />
+                <motion.h1
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
+                    className="text-teal-500 text-3xl sm:text-5xl font-extrabold mb-8"
+                >
+                    About us
+                </motion.h1>
+
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+                    {/* 1. TOP LEFT - First Image */}
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false }}
+                        variants={fadeRight}
+                        className="relative dark:bg-black h-48 md:h-64 rounded-xl shadow-lg md:col-span-5 order-2 md:order-1 overflow-hidden"
+                    >
+                        <Image
+                            src="/about-1.png"
+                            alt="About Image 1"
+                            fill
+                            className="object-cover rounded-xl"
+                            priority
+                        />
+                    </motion.div>
+
+                    {/* 2. TOP RIGHT - First Text */}
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false }}
+                        variants={fadeLeft}
+                        className="bg-teal-600 p-6 md:p-8 lg:p-12 rounded-xl shadow-xl flex items-center md:col-span-7 order-1 md:order-2 md:-mt-20 relative z-10"
+                    >
+                        <p className="text-white text-xl font-medium leading-relaxed">
+                            At <span className="font-bold">Wizaura</span>, we create modern web and mobile applications that empower businesses to reach their full potential. From sleek websites to innovative apps, we focus on quality, usability, and cutting-edge technology to bring your ideas to life.
+                        </p>
+                    </motion.div>
+
+                    {/* 3. BOTTOM LEFT - Second Text */}
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false }}
+                        variants={fadeUp}
+                        className="bg-teal-600 p-6 md:p-12 rounded-xl shadow-xl flex items-center md:col-span-7 order-3 md:order-3 relative z-10"
+                    >
+                        <p className="text-white text-lg text-center font-medium leading-relaxed">
+                            Our team blends creativity and technical expertise to deliver digital solutions that not only look great but also perform flawlessly.
+                        </p>
+                    </motion.div>
+
+                    {/* 4. BOTTOM RIGHT - Second Image */}
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false }}
+                        variants={fadeUp}
+                        className="relative dark:bg-black h-48 md:h-64 lg:h-67 rounded-xl shadow-lg md:col-span-5 order-4 md:order-4 md:-mt-11 lg:-mt-28 overflow-hidden"
+                    >
+                        <Image
+                            src="/about-2.png"
+                            alt="About Image 2"
+                            fill
+                            className="object-cover rounded-xl"
+                            priority
+                        />
+                    </motion.div>
+
                 </div>
             </div>
         </section>
     );
-}
+};
+
+export default HomeAbout;

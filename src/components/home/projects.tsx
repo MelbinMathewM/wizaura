@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 
-export default function HomeProjects() {
+const HomeProjects = () => {
     const projects = [
         {
             title: "DrChiller",
@@ -23,56 +23,108 @@ export default function HomeProjects() {
         },
     ];
 
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    };
+
+    const imageVariants = {
+        initial: { scale: 0.6 },
+        hover: { scale: 1, transition: { duration: 0.4 } },
+        tap: { scale: 1 },
+    };
+
     return (
-        <section
-            id="projects"
-            className="w-full py-12 px-6 sm:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900/98 transition-colors duration-500"
-        >
-            <div className="max-w-6xl mx-auto flex flex-col items-center gap-4 sm:gap-8">
-                {/* Heading */}
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-100 text-center">
-                    Projects <span className="text-indigo-500">Glimpse</span>
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 text-center text-lg sm:text-xl max-w-2xl">
-                    Here&apos;s a glimpse of some of the projects we&apos;ve worked on. We combine{" "}
-                    <span className="text-indigo-500 font-semibold">creativity</span> and{" "}
-                    <span className="text-indigo-500 font-semibold">technology</span> to deliver impactful solutions.
-                </p>
+        <section className="bg-white dark:bg-black py-12 px-4 md:px-8 lg:px-16 text-gray-900 dark:text-white transition-colors duration-500">
+            <div className="max-w-7xl mx-auto">
+                {/* Header */}
+                <header className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 mb-8">
+                    <motion.h2
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
+                        className="text-4xl md:text-5xl font-extrabold text-teal-500 dark:text-teal-400 leading-tight"
+                    >
+                        Project Glimpse
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
+                        className="bg-teal-500 dark:bg-teal-600 text-white text-center p-6 rounded-lg text-lg font-medium h-fit md:self-center"
+                    >
+                        Here's a glimpse of some of the projects we've worked on. We combine{" "}
+                        <span className="font-semibold">creativity</span> and{" "}
+                        <span className="font-semibold">technology</span> to deliver impactful solutions.
+                    </motion.p>
+                </header>
 
-                {/* Projects Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-                    {projects.map((project, index) => (
-                        <div
-                            key={index}
-                            className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg dark:shadow-gray-800 hover:shadow-2xl hover:scale-105 transition-all duration-500 cursor-pointer"
-                        >
-                            <Image
-                                width={280}
-                                height={280}
-                                src={project.image}
-                                alt={project.title}
-                                className="w-full object-cover"
-                            />
-                            <div className="p-4">
-                                <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">
-                                    {project.title}
-                                </h3>
-                                <p className="text-gray-600 dark:text-gray-300 text-base">
-                                    {project.description}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                {/* Cards Section */}
+                <motion.div
+                    className="relative flex flex-col md:flex-row md:justify-between gap-8 pb-6"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    {projects.map((project, index) => {
+                        const topOffset = index === 1 ? 0 : 60;
 
-                {/* CTA */}
-                <Link href="/projects" className="mt-4">
-                    <span className="flex items-center bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300">
-                        See All Projects
-                        <FaArrowRight className="ml-2" />
-                    </span>
-                </Link>
+                        return (
+                            <motion.div
+                                key={index}
+                                variants={cardVariants}
+                                className={`relative flex-1 md:max-w-[500px] h-[250px] md:h-[250px]`}
+                            >
+                                <motion.div
+                                    className={`w-full h-full border border-teal-400/30 dark:border-teal-800 rounded-xl shadow-lg flex flex-col items-center justify-center transition-transform duration-300 ease-out hover:scale-[1.03] md:absolute relative overflow-hidden
+                    bg-gradient-to-tr from-gray-200 via-gray-50 to-gray-300 dark:from-gray-900 dark:via-gray-950 dark:to-gray-800`}
+                                    style={{ top: `${topOffset}px` }}
+                                    whileHover={{ y: -5 }}
+                                >
+                                    {/* Image as icon */}
+                                    <motion.img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="w-16 h-16 rounded-full object-cover mb-5 cursor-pointer"
+                                        variants={imageVariants}
+                                        initial="initial"
+                                        whileHover="hover"
+                                    />
+
+                                    <h3 className="text-xl font-bold mb-2 text-center text-gray-900 dark:text-white">
+                                        {project.title}
+                                    </h3>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 text-center leading-relaxed mb-4">
+                                        {project.description}
+                                    </p>
+
+                                    {/* Full project image on hover */}
+                                    <motion.img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="absolute inset-0 w-full h-full object-cover rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-500 cursor-pointer"
+                                    />
+                                </motion.div>
+                            </motion.div>
+                        );
+                    })}
+                </motion.div>
+
+                {/* CTA button under the second/top card */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.3 } }}
+                    className="relative flex justify-center items-center md:justify-start mt-4 pb-12"
+                >
+                    <Link
+                        href="/services"
+                        className="flex absolute bottom-0 md:left-2/5 lg:left-3/7 items-center gap-2 bg-teal-500 dark:bg-teal-400 text-white dark:text-black font-medium text-lg px-8 py-3 rounded-full 
+            transition duration-300 ease-in-out hover:bg-teal-400 dark:hover:bg-teal-300 hover:-translate-y-0.5"
+                    >
+                        All Projects <FaArrowRight />
+                    </Link>
+                </motion.div>
             </div>
         </section>
     );
-}
+};
+
+export default HomeProjects;

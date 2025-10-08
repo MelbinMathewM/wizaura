@@ -7,7 +7,8 @@ import { FaPhoneAlt, FaPlay, FaServicestack } from "react-icons/fa";
 
 export default function HomeHero() {
   const circleSize = 400;
-  const damping = 0.998;
+  const settleDuration = 15000;
+  const startTimeRef = useRef<number | null>(null);
   const frequency = 0.5;
 
   const circleRef = useRef<HTMLDivElement>(null);
@@ -26,7 +27,6 @@ export default function HomeHero() {
     width: 0,
     height: 0,
   });
-  const [isOscillate, setIsOscillate] = useState<boolean>(false);
 
   const stars: { x: number; y: number; size: number; dx: number; dy: number }[] =
     [];
@@ -46,7 +46,7 @@ export default function HomeHero() {
     phaseRef.current = 0;
     lastTimeRef.current = performance.now();
   };
-  // Initialize U curve
+
   useEffect(() => {
     updateBounds();
     window.addEventListener("resize", updateBounds);
@@ -54,12 +54,15 @@ export default function HomeHero() {
   }, []);
 
   const startOscillation = () => {
+    startTimeRef.current = null;
     updateBounds();
-  }
+  };
 
-  // Animate rolling along U curve
   useEffect(() => {
     const tick = (now: number) => {
+      if (!startTimeRef.current) startTimeRef.current = now;
+      const elapsed = now - startTimeRef.current;
+
       const dt = (now - lastTimeRef.current) / 1000;
       lastTimeRef.current = now;
 
@@ -67,14 +70,15 @@ export default function HomeHero() {
       if (!leftX && !rightX) return;
 
       const centerX = (leftX + rightX) / 2;
+      const t = Math.min(elapsed / settleDuration, 1);
+      const amplitude = amplitudeRef.current * (1 - t);
 
       phaseRef.current += dt * frequency * Math.PI * 2;
-      amplitudeRef.current *= damping;
 
-      const x = centerX + amplitudeRef.current * Math.sin(phaseRef.current);
-      const t = (x - centerX) / ((rightX - leftX) / 2);
-      const y = baseY - curveHeight * (t * t);
-      const rotation = Math.sin(phaseRef.current) * 20;
+      const x = centerX + amplitude * Math.sin(phaseRef.current);
+      const normalized = (x - centerX) / ((rightX - leftX) / 2);
+      const y = baseY - curveHeight * (normalized * normalized);
+      const rotation = Math.sin(phaseRef.current) * 20 * (1 - t);
 
       if (circleRef.current) {
         const circleWidth = circleRef.current.offsetWidth;
@@ -83,9 +87,7 @@ export default function HomeHero() {
         circleRef.current.style.transform = `rotate(${rotation}deg)`;
       }
 
-      if (Math.abs(amplitudeRef.current) > 0.5) {
-        rafRef.current = requestAnimationFrame(tick);
-      }
+      rafRef.current = requestAnimationFrame(tick);
     };
 
     rafRef.current = requestAnimationFrame(tick);
@@ -94,7 +96,6 @@ export default function HomeHero() {
     };
   }, [curve]);
 
-  // Floating stars above the U curve
   useEffect(() => {
     const canvas = starCanvasRef.current;
     if (!canvas) return;
@@ -104,7 +105,6 @@ export default function HomeHero() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // Initialize stars
     for (let i = 0; i < 80; i++) {
       stars.push({
         x: Math.random() * window.innerWidth,
@@ -117,7 +117,6 @@ export default function HomeHero() {
 
     const animateStars = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       stars.forEach((star) => {
         star.x += star.dx;
         star.y += star.dy;
@@ -127,7 +126,7 @@ export default function HomeHero() {
         if (star.y > canvas.height * 0.6) star.y = 0;
         if (star.y < 0) star.y = canvas.height * 0.6;
 
-        ctx.fillStyle = "rgba(20,184,166,0.8)";
+        ctx.fillStyle = "rgba(154, 184, 20, 0.8)";
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
@@ -141,91 +140,105 @@ export default function HomeHero() {
 
   return (
     <section className="relative w-full h-[100vh] sm:h-screen flex items-center justify-center bg-gray-950 overflow-hidden">
-      {/* Star canvas */}
       <canvas
         ref={starCanvasRef}
         className="absolute top-0 left-0 w-full h-full pointer-events-none"
       />
 
-      {/* Gradient background under curve */}
       <svg className="absolute top-13 left-0 w-full h-full">
         <defs>
           <linearGradient id="uFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="rgba(20, 58, 184, 0.15)" />
-            <stop offset="100%" stopColor="rgba(81, 151, 243, 0.8)" />
+            <stop offset="0%" stopColor="rgba(45, 212, 190, 1)" />
+            <stop offset="40%" stopColor="rgba(45, 212, 190, 0.84)" />
+            <stop offset="70%" stopColor="rgba(255, 255, 255, 1)" />
+            <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
           </linearGradient>
 
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
+          <linearGradient id="uFillDark" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgba(45, 212, 190, 0.7)" />
+            <stop offset="70%" stopColor="rgba(0, 0, 0, 1)" />
+            <stop offset="100%" stopColor="rgba(0, 0, 0, 1)" />
+          </linearGradient>
         </defs>
 
         <path
           d={`M ${curve.leftX} ${curve.baseY} 
-              Q ${(curve.leftX + curve.rightX) / 2} ${curve.baseY + curve.curveHeight}
-              ${curve.rightX} ${curve.baseY} 
-              L ${curve.rightX} ${curve.height} 
-              L ${curve.leftX} ${curve.height} Z`}
+        Q ${(curve.leftX + curve.rightX) / 2} ${curve.baseY + curve.curveHeight}
+        ${curve.rightX} ${curve.baseY} 
+        L ${curve.rightX} ${curve.height} 
+        L ${curve.leftX} ${curve.height} Z`}
           fill="url(#uFill)"
-          opacity="0.8"
+          className="dark:hidden"
+        />
+        <path
+          d={`M ${curve.leftX} ${curve.baseY} 
+        Q ${(curve.leftX + curve.rightX) / 2} ${curve.baseY + curve.curveHeight}
+        ${curve.rightX} ${curve.baseY} 
+        L ${curve.rightX} ${curve.height} 
+        L ${curve.leftX} ${curve.height} Z`}
+          fill="url(#uFillDark)"
+          className="hidden dark:inline"
         />
 
         <path
           d={`M ${curve.leftX} ${curve.baseY} 
-              Q ${(curve.leftX + curve.rightX) / 2} ${curve.baseY + curve.curveHeight}
-              ${curve.rightX} ${curve.baseY}`}
+        Q ${(curve.leftX + curve.rightX) / 2} ${curve.baseY + curve.curveHeight}
+        ${curve.rightX} ${curve.baseY}`}
           stroke="teal"
-          strokeWidth="4"
+          strokeWidth="2"
           fill="transparent"
           filter="url(#glow)"
         />
       </svg>
 
-      {/* Wizaura Circle */}
+
       <div
         ref={circleRef}
-        className="absolute w-[250px] h-[250px] shadow-gray-900 shadow-xl sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] bg-black rounded-full flex items-center justify-center"
+        className="absolute w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] bg-black rounded-full flex flex-col items-center justify-center"
       >
         <div className="absolute w-full h-full border border-teal-400 rounded-full opacity-50" />
         <div className="absolute w-[90%] h-[90%] border-8 border-teal-300 rounded-full opacity-30" />
-        <div className="relative z-20 flex flex-col items-center justify-center text-center px-3 sm:px-6py-2 sm:py-4">
-          <Image src={"/logo.png"} alt="logo" width={80} height={80} className="sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px]" />
+
+        <div className="relative z-20 flex flex-col items-center justify-center text-center px-3 sm:px-6 py-2 sm:py-4">
+          <Image
+            src={"/logo.png"}
+            alt="logo"
+            width={80}
+            height={80}
+            className="sm:w-[100px] sm:h-[100px] lg:w-[120px] lg:h-[120px]"
+          />
           <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold text-white mb-1 sm:mb-2">
             Wizaura
           </h1>
-          <p className="text-sm sm:text-lg lg:text-xl font-semibold text-teal-400 mb-1 sm:mb-6">
+          <p className="text-sm sm:text-lg lg:text-xl font-semibold text-teal-400 mb-3 sm:mb-6">
             The Aura of Innovation
           </p>
+
+          <button
+            onClick={startOscillation}
+            className="cursor-pointer z-40 text-teal-600 hover:text-teal-500 shadow-lg hover:scale-105 transition-transform duration-300 flex items-center gap-2 text-sm sm:text-base"
+          >
+            <FaPlay />
+          </button>
         </div>
       </div>
 
       {/* Edge Buttons */}
       <Link
         href="/services"
-        className="absolute bottom-20 sm:bottom-6 left-4 sm:left-6 w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 text-xs sm:text-sm font-semibold"
+        className="absolute bottom-20 sm:bottom-6 left-4 sm:left-16 w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 border text-white shadow-lg hover:scale-110 transition-transform duration-300 text-xs sm:text-sm font-semibold"
       >
         <FaServicestack className="mb-1 text-base sm:text-lg" />
         Services
       </Link>
 
-      {/* Contact Button */}
       <Link
         href="/contact"
-        className="absolute bottom-20 sm:bottom-6 right-4 sm:right-6 w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 text-white shadow-lg hover:scale-110 transition-transform duration-300 text-xs sm:text-sm font-semibold"
+        className="absolute bottom-20 sm:bottom-6 right-4 sm:right-16 w-14 h-14 sm:w-20 sm:h-20 flex flex-col items-center justify-center rounded-full bg-teal-600 hover:bg-teal-500 border text-white shadow-lg hover:scale-110 transition-transform duration-300 text-xs sm:text-sm font-semibold"
       >
         <FaPhoneAlt className="mb-1 text-base sm:text-lg" />
         Contact
       </Link>
-      <button
-        onClick={startOscillation}
-        className="absolute bottom-24 sm:bottom-20 left-1/2 sm:left-26/51 -translate-x-1/2 cursor-pointer text-teal-500 shadow-lg hover:scale-105 transition-transform duration-300 text-sm font-semibold flex items-center gap-2"
-      >
-        <FaPlay />
-      </button>
     </section>
   );
 }

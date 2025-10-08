@@ -2,67 +2,91 @@
 
 import Link from "next/link";
 import { FaArrowRight, FaLaptopCode, FaMobileAlt, FaPalette } from "react-icons/fa";
+import { motion } from "framer-motion";
 
-export default function HomeServices() {
-    const services = [
-        {
-            icon: <FaLaptopCode size={24} />,
-            title: "Web Development",
-            description:
-                "Modern, responsive websites that engage users and drive results.",
-        },
-        {
-            icon: <FaMobileAlt size={24} />,
-            title: "Mobile Apps",
-            description:
-                "iOS and Android apps that provide seamless user experiences.",
-        },
-        {
-            icon: <FaPalette size={24} />,
-            title: "UI/UX Design",
-            description:
-                "Intuitive and beautiful designs that delight your users.",
-        },
+const HomeServices = () => {
+    const serviceCards = [
+        { icon: FaLaptopCode, title: "Web Development", description: "Modern, responsive websites that engage users and drive results." },
+        { icon: FaMobileAlt, title: "Mobile Apps", description: "iOS and Android apps that provide seamless user experiences." },
+        { icon: FaPalette, title: "UI/UX Design", description: "Intuitive and beautiful designs that delight your users." },
     ];
 
-    return (
-        <section
-            id="services"
-            className="w-full py-12 px-6 sm:px-12 lg:px-20 bg-gray-100 dark:bg-gray-900 transition-colors duration-500"
-        >
-            <div className="max-w-5xl mx-auto flex flex-col items-center gap-4 sm:gap-10">
-                {/* Heading */}
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-100 text-center">
-                    Our Services
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 text-center text-lg sm:text-xl max-w-2xl">
-                    At <span className="text-indigo-500 font-semibold">Wizaura</span>, we deliver a range of digital solutions to help your business thrive online.
-                </p>
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    };
 
-                {/* Services Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 w-full">
-                    {services.map((service, index) => (
-                        <div
-                            key={index}
-                            className="bg-white dark:bg-gray-800 rounded-xl p-6 flex flex-col items-center text-center shadow-lg hover:shadow-xl transition-shadow duration-300"
-                        >
-                            <h3 className="text-xl font-semibold text-indigo-500 mb-2 flex items-center">
-                                <span className="mr-4">{service.icon}</span>
-                                {service.title}
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-base">
-                                {service.description}
-                            </p>
-                        </div>
-                    ))}
-                </div>
-                <Link href="/services" className="mt-2 sm:mt-4">
-                    <span className="flex items-center bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300">
-                        See All Services
-                        <FaArrowRight className="ml-2" />
-                    </span>
-                </Link>
+    return (
+        <section className="bg-white dark:bg-black py-12 px-4 md:px-8 lg:px-16 text-gray-900 dark:text-white transition-colors duration-500">
+            <div className="max-w-7xl mx-auto">
+                {/* Header */}
+                <header className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 mb-8">
+                    <motion.h2
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
+                        className="text-4xl md:text-5xl font-extrabold text-teal-500 dark:text-teal-400 leading-tight"
+                    >
+                        Our Services
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
+                        className="bg-teal-500 dark:bg-teal-600 text-white text-center p-6 rounded-lg text-lg font-medium h-fit md:self-center"
+                    >
+                        At Wizaura, we deliver a range of digital solutions to help your business thrive online.
+                    </motion.p>
+                </header>
+
+                {/* Cards Section */}
+                <motion.div
+                    className="flex flex-col md:flex-row md:justify-between md:gap-8"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    {serviceCards.map((card, index) => {
+                        const IconComponent = card.icon;
+                        return (
+                            <motion.div
+                                key={index}
+                                variants={cardVariants}
+                                className="relative flex-1 md:max-w-[380px] h-[280px] md:h-[300px]"
+                            >
+                                <div
+                                    className={`w-full h-full border border-teal-400/30 dark:border-teal-800
+                    rounded-xl p-8 shadow-lg flex flex-col justify-center items-center transition-transform duration-300 ease-out
+                    hover:scale-[1.03] dark:hover:shadow-gray-900
+                    md:absolute relative overflow-hidden
+                    bg-gradient-to-tr from-gray-200 via-gray-50 to-gray-300
+                    dark:from-gray-900 dark:via-gray-950 dark:to-gray-800`}
+                                    style={{ top: `calc(${index} * 40px)` }}
+                                >
+                                    <IconComponent className="text-4xl text-teal-500 dark:text-teal-300 mb-5" />
+                                    <h3 className="text-xl font-bold mb-2 text-center text-gray-900 dark:text-white">{card.title}</h3>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 text-center leading-relaxed">{card.description}</p>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+                </motion.div>
+
+                {/* Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.5 } }}
+                    className="mt-8 flex justify-center md:justify-start"
+                >
+                    <Link
+                        href="/services"
+                        className="flex items-center gap-2 bg-teal-500 dark:bg-teal-400 text-white dark:text-black font-medium text-lg px-8 py-3 rounded-full 
+            transition duration-300 ease-in-out hover:bg-teal-400 dark:hover:bg-teal-300 hover:-translate-y-0.5"
+                    >
+                        All Services <FaArrowRight />
+                    </Link>
+                </motion.div>
             </div>
         </section>
     );
-}
+};
+
+export default HomeServices;

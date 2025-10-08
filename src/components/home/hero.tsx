@@ -95,9 +95,9 @@ export default function HomeHero() {
       {/* Main Oscillating Circle */}
       <div
         ref={circleRef}
-        className="absolute w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] lg:w-[380px] lg:h-[380px]
+        className="absolute w-[300px] h-[300px] sm:w-[320px] sm:h-[320px] lg:w-[380px] lg:h-[380px]
         bg-black rounded-full flex flex-col items-center justify-center shadow-2xl border-4 border-teal-800
-        translate-y-[-60px] sm:translate-y-[-30px] transition-transform duration-700 hover:scale-110"
+        translate-y-[-90px] sm:translate-y-[-30px] transition-transform duration-700 hover:scale-110"
       >
         <div className="absolute inset-0 border-[10px] border-teal-300/40 rounded-full" />
         <div className="absolute inset-[20px] border border-teal-200 rounded-full" />
@@ -129,8 +129,8 @@ export default function HomeHero() {
       {/* Left Edge Button */}
       <Link
         href="/services"
-        className="absolute bottom-8 left-8 sm:bottom-12 sm:left-24 lg:left-30 flex flex-col items-center justify-center 
-        w-14 h-14 sm:w-24 sm:h-24 lg:w-30 lg:h-30 rounded-full bg-black hover:bg-black text-teal-500 shadow-lg border-2 border-teal-500
+        className="absolute bottom-16 left-8 sm:bottom-12 sm:left-24 lg:left-30 flex flex-col items-center justify-center 
+        w-20 h-20 sm:w-24 sm:h-24 lg:w-30 lg:h-30 rounded-full bg-black hover:bg-black text-teal-500 shadow-lg border-2 border-teal-500
         hover:scale-110 transition-transform duration-300"
       >
         <FaServicestack className="text-lg sm:text-xl lg:text-2xl mb-1" />
@@ -140,8 +140,8 @@ export default function HomeHero() {
       {/* Right Edge Button */}
       <Link
         href="/contact"
-        className="absolute bottom-8 right-8 sm:bottom-12 sm:right-24 lg:right-30 flex flex-col items-center justify-center 
-        w-14 h-14 sm:w-24 sm:h-24 lg:w-30 lg:h-30 rounded-full bg-black hover:bg-black text-teal-500 shadow-lg border-2 border-teal-500
+        className="absolute bottom-16 right-8 sm:bottom-12 sm:right-24 lg:right-30 flex flex-col items-center justify-center 
+        w-20 h-20 sm:w-24 sm:h-24 lg:w-30 lg:h-30 rounded-full bg-black hover:bg-black text-teal-500 shadow-lg border-2 border-teal-500
         hover:scale-110 transition-transform duration-300"
       >
         <FaPhoneAlt className="text-lg sm:text-xl lg:text-2xl mb-1" />

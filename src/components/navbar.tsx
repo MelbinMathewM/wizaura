@@ -53,7 +53,7 @@ export default function Navbar() {
                     {/* Brand Name */}
                     <Link
                         href="#home"
-                        className="text-2xl font-bold text-teal-600 dark:text-teal-400"
+                        className="text-2xl font-bold text-teal-500"
                     >
                         Wizaura
                     </Link>
@@ -69,7 +69,7 @@ export default function Navbar() {
                                     <Link
                                         href={link.href}
                                         className={`font-medium transition ${isActive
-                                            ? "text-teal-600 font-semibold dark:text-teal-400"
+                                            ? "text-teal-500 font-semibold dark:text-teal-400"
                                             : "text-teal-500 hover:text-teal-600 dark:text-teal-500 dark:hover:text-teal-400"
                                             }`}
                                     >

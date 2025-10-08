@@ -51,7 +51,7 @@ const HomeProjects = () => {
                         whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
                         className="bg-teal-500 dark:bg-teal-600 text-white text-center p-6 rounded-lg text-lg font-medium h-fit md:self-center"
                     >
-                        Here's a glimpse of some of the projects we've worked on. We combine{" "}
+                        Here&apos;s a glimpse of some of the projects we&apos;ve worked on. We combine{" "}
                         <span className="font-semibold">creativity</span> and{" "}
                         <span className="font-semibold">technology</span> to deliver impactful solutions.
                     </motion.p>

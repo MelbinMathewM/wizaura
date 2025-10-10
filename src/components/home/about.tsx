@@ -21,7 +21,7 @@ const HomeAbout = () => {
     };
 
     return (
-        <section className="min-h-screen dark:bg-black pt-8 pb-16 px-4 sm:px-8 lg:px-16 overflow-x-hidden">
+        <section className="min-h-screen dark:bg-black py-12 px-4 sm:px-8 lg:px-16 overflow-x-hidden">
             <div className="max-w-7xl mx-auto">
 
                 <motion.h1
@@ -32,7 +32,7 @@ const HomeAbout = () => {
                     About us
                 </motion.h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 items-start">
 
                     {/* 1. TOP LEFT - First Image */}
                     <motion.div

@@ -115,10 +115,10 @@ const HomeProjects = () => {
                 >
                     <Link
                         href="/projects"
-                        className="absolute bottom-0 md:left-2/5 lg:left-3/7 flex items-center gap-2 bg-teal-500 dark:bg-teal-400 text-white font-medium text-lg px-8 py-3 rounded-full 
+                        className="absolute bottom-0 md:left-4/11 lg:left-3/7 flex items-center gap-2 bg-teal-500 dark:bg-teal-400 text-white font-medium text-lg px-8 py-3 rounded-full 
                             transition duration-300 ease-in-out hover:bg-teal-400 dark:hover:bg-teal-300 hover:-translate-y-0.5"
                     >
-                        All Projects <FaArrowRight />
+                        &nbsp;&nbsp;All Projects <FaArrowRight />&nbsp;&nbsp;
                     </Link>
                 </motion.div>
             </div>

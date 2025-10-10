@@ -63,13 +63,7 @@ export default function HomeHero() {
             The Aura of Innovation
           </p>
 
-          <button
-            className="mt-2 bg-transparent backdrop-blur-md cursor-pointer border border-teal-950 
-            hover:bg-gray-950 text-teal-800 px-5 py-2 rounded-full flex items-center gap-2 
-            text-sm sm:text-base transition-all duration-300"
-          >
-            <FaPlay />
-          </button>
+          <p className="w-10 h-10"></p>
         </div>
       </div>
 

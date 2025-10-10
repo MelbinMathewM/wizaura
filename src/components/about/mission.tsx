@@ -1,48 +1,85 @@
-export default function AboutMission() {
-    return (
-        <section className="py-12 px-6 sm:px-12 lg:px-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-            {/* Mission Section */}
-            <div className="text-center mb-6 sm:mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-indigo-600 dark:text-indigo-400">
-                    Our Mission
-                </h2>
-                <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                    At <span className="font-semibold text-indigo-600 dark:text-indigo-400">Wizaura</span>, our mission is to help
-                    businesses grow by delivering innovative, high-quality, and user-friendly
-                    web and app solutions. We strive to bring creativity, technology, and
-                    strategy together to empower our clients in the digital world.
-                </p>
-            </div>
+"use client";
 
-            {/* Core Values Section */}
-            <div className="text-center">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-12 text-indigo-600 dark:text-indigo-400">
-                    Our Core Values
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-10 max-w-6xl mx-auto">
-                    <div className="bg-gray-50 dark:bg-gray-950 p-6 rounded-xl shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
-                        <h3 className="font-semibold text-xl mb-3 text-indigo-600 dark:text-indigo-400">Innovation</h3>
-                        <p className="text-gray-700 dark:text-gray-300">
-                            We constantly explore new ideas and technologies to stay ahead.
+import { FaLightbulb, FaCheckCircle, FaPaintBrush, FaUsers } from "react-icons/fa";
+
+export default function AboutMission() {
+    const benefitCards = [
+        { id: 1, icon: <FaLightbulb />, title: "Innovation", description: "We constantly explore new ideas and technologies to stay ahead." },
+        { id: 2, icon: <FaCheckCircle />, title: "Quality", description: "Every project is delivered with high standards and attention to detail." },
+        { id: 3, icon: <FaPaintBrush />, title: "Creativity", description: "We bring unique, engaging designs that make your brand stand out." },
+        { id: 4, icon: <FaUsers />, title: "Clientele", description: "Our clients' success is our top priority in every project." },
+    ];
+
+    return (
+        <section className="w-full py-16 px-6 sm:px-12 lg:px-16 bg-white dark:bg-black transition-colors duration-300 overflow-hidden">
+            <style jsx>{`
+        .flip-card { perspective: 1000px; }
+        .flip-card-inner {
+          transform-style: preserve-3d;
+          transition: transform 0.7s;
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+        /* rotate on hover */
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+
+        .flip-card-front,
+        .flip-card-back {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          position: absolute;
+          inset: 0;
+        }
+
+        /* back side faces away by default */
+        .flip-card-back { transform: rotateY(180deg); }
+      `}</style>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-6 items-start lg:items-center">
+                {/* Left: Mission */}
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left h-full">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-teal-600 dark:text-teal-400">
+                        Our Mission
+                    </h2>
+                    <div className="bg-teal-600 dark:bg-teal-700 text-white rounded-xl p-6 sm:p-8 w-full max-w-xl flex items-center">
+                        <p className="text-base sm:text-lg md:text-xl leading-relaxed">
+                            At <span className="font-semibold text-white">Wizaura</span>, our mission is to help
+                            businesses grow by delivering innovative, high-quality, and user-friendly
+                            web and app solutions. We strive to bring creativity, technology, and
+                            strategy together to empower our clients in the digital world.
                         </p>
                     </div>
-                    <div className="bg-gray-50 dark:bg-gray-950 p-6 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
-                        <h3 className="font-semibold text-xl mb-3 text-indigo-600 dark:text-indigo-400">Quality</h3>
-                        <p className="text-gray-700 dark:text-gray-300">
-                            Every project is delivered with high standards and attention to detail.
-                        </p>
-                    </div>
-                    <div className="bg-gray-50 dark:bg-gray-950 p-6 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
-                        <h3 className="font-semibold text-xl mb-3 text-indigo-600 dark:text-indigo-400">Creativity</h3>
-                        <p className="text-gray-700 dark:text-gray-300">
-                            We bring unique, engaging designs that make your brand stand out.
-                        </p>
-                    </div>
-                    <div className="bg-gray-50 dark:bg-gray-950 p-6 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
-                        <h3 className="font-semibold text-xl mb-3 text-indigo-600 dark:text-indigo-400">Customer Focus</h3>
-                        <p className="text-gray-700 dark:text-gray-300">
-                            Our clients success is our top priority in every project.
-                        </p>
+                </div>
+
+                {/* Right: Core Values (flip cards) */}
+                <div className="flex flex-col items-center lg:items-start justify-center lg:justify-start h-full lg:pe-12">
+                    <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-teal-600 dark:text-teal-400 text-center lg:text-left">
+                        Our Core Values
+                    </h2>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+                        {benefitCards.map((card) => (
+                            <div
+                                key={card.id}
+                                className="flip-card w-[160px] sm:w-[160px] md:w-[180px] lg:w-[160px] h-[160px] sm:h-[160px] md:h-[180px] lg:h-[230px]"
+                            >
+                                <div className="flip-card-inner">
+                                    {/* FRONT: icon + title (centered) */}
+                                    <div className="flip-card-front rounded-xl bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 dark:from-gray-900 dark:via-gray-950 dark:to-gray-800 border border-teal-300 dark:border-teal-800 shadow-lg flex flex-col items-center justify-center text-center text-gray-700 dark:text-gray-300 p-4">
+                                        <div className="text-4xl text-teal-500 mb-2">{card.icon}</div>
+                                        <h3 className="font-semibold text-base sm:text-lg">{card.title}</h3>
+                                    </div>
+
+                                    {/* BACK: icon + title + description */}
+                                    <div className="flip-card-back rounded-xl bg-teal-600 dark:bg-teal-700 text-white shadow-lg flex flex-col items-center justify-center text-center p-4 pe-5">
+                                        <div className="text-2xl mb-2">{card.icon}</div>
+                                        <h3 className="font-semibold text-lg mb-1">{card.title}</h3>
+                                        <p className="text-sm opacity-90">{card.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

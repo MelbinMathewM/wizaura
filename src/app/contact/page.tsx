@@ -1,5 +1,5 @@
 import Breadcrumbs from "@/components/breadcrumbs";
-import ContactForm from "@/components/contact/form";
+import ContactForm from "@/components/contact/section";
 import ContactHero from "@/components/contact/hero";
 
 export default function Contact() {

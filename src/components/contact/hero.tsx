@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 
 export default function ContactHero() {
     return (
-        <section className="w-full py-12 px-6 sm:px-12 lg:px-20 bg-white dark:bg-black transition-colors duration-500 flex flex-col items-center text-center">
+        <section className="w-full py-6 px-6 sm:px-12 lg:px-20 bg-white dark:bg-black transition-colors duration-500 flex flex-col items-center text-center">
             <header className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12">
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
-                    className="text-4xl md:text-5xl font-extrabold text-teal-600 dark:text-teal-400 leading-tight"
+                    className="text-4xl md:text-5xl text-left font-extrabold text-teal-600 dark:text-teal-400 leading-tight"
                 >
                     Get in Touch
                 </motion.h2>

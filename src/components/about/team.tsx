@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 export default function AboutTeam() {
@@ -9,65 +11,55 @@ export default function AboutTeam() {
             bio: "Visionary behind Wizaura, leading innovation in web and app solutions.",
             portfolio: "https://melbinmathew.vercel.app",
         },
-        // {
-        //     name: "Anya Thomas",
-        //     role: "Co-Founder & CTO",
-        //     img: "/team/anya.jpg",
-        //     bio: "Tech lead focused on delivering cutting-edge solutions.",
-        //     portfolio: "https://anya-portfolio.com",
-        // },
-        // {
-        //     name: "Rohit Kumar",
-        //     role: "Lead Designer",
-        //     img: "/team/rohit.jpg",
-        //     bio: "Designs intuitive and visually engaging user experiences.",
-        //     portfolio: "https://rohit-portfolio.com",
-        // },
-        // {
-        //     name: "Sara Joseph",
-        //     role: "Marketing Head",
-        //     img: "/team/sara.jpg",
-        //     bio: "Drives brand growth and customer engagement strategies.",
-        //     portfolio: "https://sara-portfolio.com",
-        // },
+        // Add more members here
     ];
 
     return (
-        <section className="py-12 px-6 sm:px-12 lg:px-24 bg-white dark:bg-gray-900 transition-colors duration-300">
-            <div className="text-center mb-8 sm:mb-16">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-600 dark:text-indigo-400">
+        <section className="py-6 px-6 sm:px-12 lg:px-16 bg-white dark:bg-black transition-colors duration-300">
+            {/* Header + Description */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center mb-10">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-teal-600 dark:text-teal-400 text-center lg:text-left">
                     Meet Our Team
                 </h2>
-                <p className="mt-4 max-w-3xl mx-auto text-gray-700 dark:text-gray-300 text-base sm:text-lg">
+                <p className="bg-teal-600 text-white rounded-xl p-6 text-base sm:text-lg leading-relaxed text-center lg:text-left">
                     Our team of experts works together to bring innovative web and app solutions to life.
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-10 max-w-6xl mx-auto">
+            {/* Team Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 {teamMembers.map((member) => (
                     <div
                         key={member.name}
-                        className="bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition transform hover:-translate-y-1 p-6 text-center"
+                        className="bg-gradient-to-tr from-gray-50 via-gray-300 to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-800
+                        border border-teal-400/30 dark:border-teal-800
+                        rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 p-6 flex flex-col items-center text-center"
                     >
                         <Image
                             width={280}
                             height={280}
                             src={member.img}
                             alt={member.name}
-                            className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
+                            className="w-32 h-32 rounded-full mb-4 object-cover"
                         />
-                        <h3 className="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-1">
+                        <h3 className="text-xl sm:text-2xl font-semibold text-teal-600 dark:text-teal-400 mb-1">
                             {member.name}
                         </h3>
-                        <p className="text-gray-500 dark:text-gray-400 mb-3">{member.role}</p>
-                        <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base mb-4">
+                        <p
+                            className="bg-gradient-to-tr from-yellow-950 via-yellow-400 to-yellow-950 
+                dark:from-yellow-100 dark:via-yellow-950 dark:to-yellow-100
+                bg-clip-text text-transparent font-semibold mb-3"
+                        >
+                            {member.role}
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-4">
                             {member.bio}
                         </p>
                         <a
                             href={member.portfolio}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-700 dark:hover:text-indigo-600"
+                            className="text-teal-600 dark:text-teal-400 font-medium hover:text-teal-700 dark:hover:text-teal-300"
                         >
                             View Portfolio
                         </a>

@@ -3,7 +3,7 @@
 import { FaBolt, FaUsers, FaCheckCircle, FaClock } from "react-icons/fa";
 import { motion } from "framer-motion";
 
-const WhyChooseUs = () => {
+const HomeChoose = () => {
     const benefitCards = [
         {
             icon: <FaBolt />,
@@ -115,4 +115,4 @@ const WhyChooseUs = () => {
     );
 };
 
-export default WhyChooseUs;
+export default HomeChoose;

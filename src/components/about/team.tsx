@@ -11,13 +11,20 @@ export default function AboutTeam() {
             bio: "Visionary behind Wizaura, leading innovation in web and app solutions.",
             portfolio: "https://melbinmathew.vercel.app",
         },
-        // Add more members here
+        {
+            name: "Aswanth C",
+            role: "Co-Founder & COO",
+            img: "/aswanth_c_1.jpg",
+            bio: "Driving operations and ensuring seamless execution of projects across all teams.",
+            portfolio: "https://melbinmathew.vercel.app",
+        },
+        
     ];
 
     return (
         <section className="py-6 px-6 sm:px-12 lg:px-16 bg-white dark:bg-black transition-colors duration-300">
             {/* Header + Description */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center mb-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center mb-4 md:mb-10">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-teal-600 dark:text-teal-400 text-center lg:text-left">
                     Meet Our Team
                 </h2>

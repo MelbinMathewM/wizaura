@@ -12,12 +12,9 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 const HomeChoose = () => {
-    
-
     return (
         <section className="bg-white dark:bg-black text-black dark:text-white py-12 px-4 md:px-16">
             <div className="max-w-7xl mx-auto">
-
                 {/* Heading Section */}
                 <header className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 mb-4 md:mb-8">
                     <motion.h2
@@ -40,27 +37,24 @@ const HomeChoose = () => {
                 </header>
 
                 {/* Rhombus Cards Section */}
-                <div
-                    className="row-start-1 row-end-3 col-start-1 col-end-2 relative 
-                        w-full flex justify-center md:justify-start 
-                        ps-0 sm:ps-4 lg:ps-36 mt-12 md:-mt-24 md:mb-6"
-                >
+                <div className="relative w-full flex justify-center md:justify-start ps-0 sm:ps-4 lg:ps-36 mt-12 md:-mt-24 md:mb-6">
                     <div className="relative w-[300px] h-[300px] md:w-[360px] md:h-[360px]">
                         {benefitCards.map((card) => (
                             <div
                                 key={card.id}
                                 className={`
-                                    absolute w-[120px] h-[120px] md:w-[140px] md:h-[140px]
-                                    bg-gradient-to-tr from-gray-200 via-gray-50 to-gray-300 
-                                    dark:from-gray-900 dark:via-gray-950 dark:to-gray-800
-                                    border border-teal-300 dark:border-teal-800 rounded-lg
-                                    flex items-center justify-center shadow-lg
-                                    transition-all duration-500 transform rotate-45
-                                    ${card.pos} group cursor-pointer
-                                    hover:rotate-0 hover:w-[220px] hover:h-[220px] hover:z-50
-                                `}
+                  absolute w-[120px] h-[120px] md:w-[140px] md:h-[140px]
+                  bg-gradient-to-tr from-gray-200 via-gray-50 to-gray-300 
+                  dark:from-gray-900 dark:via-gray-950 dark:to-gray-800
+                  border border-teal-300 dark:border-teal-800 rounded-lg
+                  flex items-center justify-center shadow-lg
+                  transform rotate-45 ${card.pos} group cursor-pointer
+                  transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+                  hover:rotate-0 hover:scale-125 hover:z-50
+                `}
                             >
-                                <div className="absolute inset-0 flex flex-col items-center justify-center transform -rotate-45 transition-all duration-300 group-hover:hidden">
+                                {/* Diamond View */}
+                                <div className="absolute inset-0 flex flex-col items-center justify-center transform -rotate-45 transition-all duration-500 ease-in-out group-hover:opacity-0">
                                     <div className="text-3xl text-teal-500 mb-1 flex items-center justify-center">
                                         {iconMap[card.icon]}
                                     </div>
@@ -69,15 +63,15 @@ const HomeChoose = () => {
                                     </h3>
                                 </div>
 
-                                {/* Square view (on hover) */}
-                                <div className="absolute inset-0 hidden group-hover:flex flex-col items-center justify-center text-center px-4 py-4 transform -rotate-0 transition-all duration-300">
-                                    <div className="text-3xl text-teal-500 mb-2 flex items-center justify-center">
+                                {/* Square (hover) View */}
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center text-center px-2 py-2 transform transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                                    <div className="text-xl text-teal-500 mb-1 flex items-center justify-center">
                                         {iconMap[card.icon]}
                                     </div>
-                                    <h3 className="text-lg text-gray-700 dark:text-gray-300 font-bold mb-2">
+                                    <h3 className="text-base text-gray-700 dark:text-gray-300 font-bold mb-1">
                                         {card.title}
                                     </h3>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                                    <p className="text-xs text-gray-500 dark:text-gray-400">
                                         {card.description}
                                     </p>
                                 </div>

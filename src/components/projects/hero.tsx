@@ -1,12 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function ProjectsHero() {
     return (
-        <section className="relative w-full pt-8 px-6 sm:px-12 bg-white dark:bg-black transition-colors duration-500">
+        <section className="relative pt-8 px-6 sm:px-12 bg-white dark:bg-black transition-colors duration-500">
+            <div className="max-w-7xl mx-auto">
                 <header className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12">
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
@@ -23,6 +22,7 @@ export default function ProjectsHero() {
                         Explore a selection of web and mobile applications we&apos;ve built for clients across different industries. Each project demonstrates our commitment to quality, innovation, and user-centric design.
                     </motion.p>
                 </header>
+            </div>
         </section>
     );
 }

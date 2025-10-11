@@ -68,10 +68,10 @@ export default function Footer() {
                     <p className="flex items-center gap-2">
                         <FaPhoneAlt className="text-teal-600 dark:text-teal-400" />
                         <a
-                            href="tel:+911234567890"
+                            href="tel:+919747827371"
                             className="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"
                         >
-                            +91 123 456 7890
+                            +91 9747 827 371
                         </a>
                     </p>
                     <p className="flex items-center gap-2 text-gray-400">

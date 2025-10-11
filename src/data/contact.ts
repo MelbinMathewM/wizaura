@@ -14,7 +14,7 @@ export const info = [
     {
         icon: "FaMapMarkerAlt",
         title: "Address",
-        detail: "Kannur, Kerala, India",
-        href: "https://goo.gl/maps/yourmaplink",
+        detail: "Cherupuzha, Kerala, India",
+        href: "https://www.google.com/maps/search/Cherupuzha,+Kannur,+Kerala",
     },
 ];

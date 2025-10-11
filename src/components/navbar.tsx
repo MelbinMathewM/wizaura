@@ -35,7 +35,7 @@ export default function Navbar() {
             className={`w-full fixed top-0 left-0 z-50 transition-all duration-500 
         ${pathname === "/" && !isScrolled
                     ? "bg-transparent shadow-none"
-                    : "bg-white dark:bg-black shadow-md dark:shadow-gray-900 backdrop-blur-md"
+                    : "bg-white dark:bg-black shadow-md dark:shadow-gray-950 backdrop-blur-md"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 sm:px-8 flex justify-between items-center h-16">
@@ -61,7 +61,7 @@ export default function Navbar() {
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-8">
-                    <ul className="flex items-center gap-6">
+                    <ul className={`flex items-center gap-6 ${ !isScrolled ? "backdrop-blur-md py-4 px-4" : "px-4" }`}>
                         {navLinks.map((link) => {
                             const isActive = pathname === link.href;
                             return (

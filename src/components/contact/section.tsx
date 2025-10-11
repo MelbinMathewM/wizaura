@@ -71,8 +71,8 @@ export default function ContactSection() {
     };
 
     return (
-        <section className="w-full py-8 px-6 sm:px-12 lg:px-20 bg-white dark:bg-black transition-colors duration-500">
-            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-stretch">
+        <section className="py-8 md:py-12 px-6 sm:px-12 bg-white dark:bg-black transition-colors duration-500">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-stretch">
 
                 {/* Left Side: Contact Information */}
                 <div className="flex flex-col justify-center text-center lg:text-left">

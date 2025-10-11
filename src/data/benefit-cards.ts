@@ -1,7 +1,7 @@
 export const benefitCards = [
         {
             icon: "FaBolt",
-            title: "Modern Technology",
+            title: "Hightech",
             description:
                 "We use the latest tools and frameworks to deliver high-quality digital solutions.",
             id: 1,

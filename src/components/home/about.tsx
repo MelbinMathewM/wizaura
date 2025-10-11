@@ -55,7 +55,7 @@ const HomeAbout = () => {
             "
                     >
                         <Image
-                            src="/about-1.png"
+                            src="/about-1.webp"
                             alt="About Image 1"
                             fill
                             className="object-cover rounded-xl"
@@ -118,7 +118,7 @@ const HomeAbout = () => {
             "
                     >
                         <Image
-                            src="/about-2.png"
+                            src="/about-2.webp"
                             alt="About Image 2"
                             fill
                             className="object-cover rounded-xl"

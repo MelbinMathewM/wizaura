@@ -27,7 +27,7 @@ export default function AboutHero() {
                         className="w-full max-w-md rounded-2xl overflow-hidden shadow-md"
                     >
                         <Image
-                            src="/about-main2.png"
+                            src="/about-main2.webp"
                             alt="About Wizaura"
                             width={800}
                             height={400}
@@ -44,7 +44,7 @@ export default function AboutHero() {
                         className="w-full max-w-md rounded-2xl overflow-hidden shadow-md"
                     >
                         <Image
-                            src="/about-main.png"
+                            src="/about-main.webp"
                             alt="About Wizaura"
                             width={800}
                             height={400}

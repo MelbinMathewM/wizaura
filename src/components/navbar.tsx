@@ -20,10 +20,10 @@ export default function Navbar() {
     ];
 
     useEffect(() => {
-        if (pathname !== "/") return; // apply only on home page
+        if (pathname !== "/") return;
 
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20); // change bg after scrolling 20px
+            setIsScrolled(window.scrollY > 20);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -35,7 +35,7 @@ export default function Navbar() {
             className={`w-full fixed top-0 left-0 z-50 transition-all duration-500 
         ${pathname === "/" && !isScrolled
                     ? "bg-transparent shadow-none"
-                    : "bg-white dark:bg-black dark:border-b dark:border-gray-900 shadow-md backdrop-blur-md"
+                    : "bg-white dark:bg-black shadow-md dark:shadow-gray-900 backdrop-blur-md"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 sm:px-8 flex justify-between items-center h-16">

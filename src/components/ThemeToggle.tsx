@@ -6,7 +6,6 @@ import { BiMoon, BiSun } from "react-icons/bi";
 export default function ThemeToggle() {
     const [isDark, setIsDark] = useState(false);
 
-    // On initial load, set theme from localStorage or system preference
     useEffect(() => {
         const savedTheme = localStorage.getItem("theme");
         const prefersDark = !savedTheme

@@ -3,25 +3,10 @@
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { projects } from "@/data/projects";
 
 const HomeProjects = () => {
-    const projects = [
-        {
-            title: "DrChiller",
-            image: "/drchiller_landing.webp",
-            description: "An online platform for HVAC & chiller services with seamless booking and expert support.",
-        },
-        {
-            title: "E-learning Platform",
-            image: "/drchiller_landing.webp",
-            description: "Interactive platform for online courses and tutorials.",
-        },
-        {
-            title: "Portfolio Website",
-            image: "/drchiller_landing.webp",
-            description: "Personal portfolio showcasing projects and skills.",
-        },
-    ];
+    const featuredProjects = projects.slice(0, 3);
 
     const cardVariants = {
         hidden: { opacity: 0, y: 30 },
@@ -64,7 +49,7 @@ const HomeProjects = () => {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
                 >
-                    {projects.map((project, index) => {
+                    {featuredProjects.map((project, index) => {
                         let topClass = "";
                         if (index === 0) topClass = "md:top-16";
                         else if (index === 1) topClass = "md:top-0";

@@ -3,6 +3,13 @@
 import { useState } from "react";
 import emailjs from "emailjs-com";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { info } from "@/data/contact";
+
+const iconMap: Record<string, React.ReactNode> = {
+    FaPhoneAlt: <FaPhoneAlt className="w-4 h-4 text-teal-500 dark:text-teal-400 me-2" />,
+    FaEnvelope: <FaEnvelope className="w-4 h-4 text-teal-500 dark:text-teal-400 me-2" />,
+    FaMapMarkerAlt: <FaMapMarkerAlt className="w-4 h-4 text-teal-500 dark:text-teal-400 me-2" />,
+};
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -63,27 +70,6 @@ export default function ContactSection() {
         }
     };
 
-    const info = [
-        {
-            icon: <FaPhoneAlt className="w-5 h-5 text-teal-600 dark:text-teal-400" />,
-            title: "Phone",
-            detail: "+91 97478 27371",
-            href: "tel:+919747827371",
-        },
-        {
-            icon: <FaEnvelope className="w-5 h-5 text-teal-600 dark:text-teal-400" />,
-            title: "Email",
-            detail: "info@wizaura.com",
-            href: "mailto:info@wizaura.com",
-        },
-        {
-            icon: <FaMapMarkerAlt className="w-5 h-5 text-teal-600 dark:text-teal-400" />,
-            title: "Address",
-            detail: "Kannur, Kerala, India",
-            href: "https://goo.gl/maps/yourmaplink",
-        },
-    ];
-
     return (
         <section className="w-full py-8 px-6 sm:px-12 lg:px-20 bg-white dark:bg-black transition-colors duration-500">
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-stretch">
@@ -106,7 +92,7 @@ export default function ContactSection() {
                                 dark:from-gray-900 dark:via-gray-950 dark:to-gray-800"
                             >
                                 <h3 className="text-lg font-semibold text-teal-500 mb-2 flex items-center">
-                                    <span className="mr-3">{item.icon}</span>
+                                    <span>{iconMap[item.icon]}</span>
                                     {item.title}
                                 </h3>
                                 <p className="text-gray-700 dark:text-gray-300">{item.detail}</p>

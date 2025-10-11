@@ -2,18 +2,34 @@
 
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
     return (
         <footer className="w-full bg-gray-950 dark:bg-gray-900 text-gray-800 dark:text-gray-300 transition-colors duration-500 pt-12 pb-4 px-6 sm:px-12 lg:px-20">
             <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
                 {/* Brand */}
-                <div className="flex flex-col gap-3">
-                    <h2 className="text-2xl font-bold text-teal-600 dark:text-teal-400">Wizaura</h2>
+                <div className="flex flex-col gap-2">
+                    {/* Logo + Heading */}
+                    <div className="flex items-center gap-1">
+                        <Image
+                            src="/logo.png"
+                            alt="Wizaura Logo"
+                            height={40}
+                            width={40}
+                            className="object-contain"
+                        />
+                        <h2 className="text-2xl font-bold text-teal-600 dark:text-teal-400">
+                            Wizaura
+                        </h2>
+                    </div>
+
+                    {/* Description */}
                     <p className="text-gray-400 dark:text-gray-400">
                         Crafting modern web and mobile applications that empower businesses.
                     </p>
                 </div>
+
 
                 {/* Navigation Links */}
                 <div className="flex flex-col gap-3">

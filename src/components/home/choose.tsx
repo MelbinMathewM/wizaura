@@ -2,42 +2,17 @@
 
 import { FaBolt, FaUsers, FaCheckCircle, FaClock } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { benefitCards } from "@/data/benefit-cards";
+
+const iconMap: Record<string, React.ReactNode> = {
+    FaBolt: <FaBolt />,
+    FaUsers: <FaUsers />,
+    FaCheckCircle: <FaCheckCircle />,
+    FaClock: <FaClock />,
+};
 
 const HomeChoose = () => {
-    const benefitCards = [
-        {
-            icon: <FaBolt />,
-            title: "Modern Technology",
-            description:
-                "We use the latest tools and frameworks to deliver high-quality digital solutions.",
-            id: 1,
-            pos: "top-0 left-1/2 -translate-x-1/2",
-        },
-        {
-            icon: <FaUsers />,
-            title: "Expert Team",
-            description:
-                "Our team combines creativity and technical expertise to solve complex challenges.",
-            id: 2,
-            pos: "top-1/2 right-0 -translate-y-1/2",
-        },
-        {
-            icon: <FaCheckCircle />,
-            title: "Trustworthy",
-            description:
-                "We ensure clarity, honesty, and transparency for consistently excellent results.",
-            id: 3,
-            pos: "bottom-0 left-1/2 -translate-x-1/2",
-        },
-        {
-            icon: <FaClock />,
-            title: "Timely Delivery",
-            description:
-                "We respect deadlines and deliver projects efficiently without compromising quality.",
-            id: 4,
-            pos: "top-1/2 left-0 -translate-y-1/2",
-        },
-    ];
+    
 
     return (
         <section className="bg-white dark:bg-black text-black dark:text-white py-12 px-4 md:px-16">
@@ -87,7 +62,7 @@ const HomeChoose = () => {
                             >
                                 <div className="absolute inset-0 flex flex-col items-center justify-center transform -rotate-45 transition-all duration-300 group-hover:hidden">
                                     <div className="text-3xl text-teal-500 mb-1 flex items-center justify-center">
-                                        {card.icon}
+                                        {iconMap[card.icon]}
                                     </div>
                                     <h3 className="text-base text-gray-700 dark:text-gray-300 font-bold text-center">
                                         {card.title}
@@ -96,8 +71,8 @@ const HomeChoose = () => {
 
                                 {/* Square view (on hover) */}
                                 <div className="absolute inset-0 hidden group-hover:flex flex-col items-center justify-center text-center px-4 py-4 transform -rotate-0 transition-all duration-300">
-                                    <div className="text-4xl text-teal-500 mb-2 flex items-center justify-center">
-                                        {card.icon}
+                                    <div className="text-3xl text-teal-500 mb-2 flex items-center justify-center">
+                                        {iconMap[card.icon]}
                                     </div>
                                     <h3 className="text-lg text-gray-700 dark:text-gray-300 font-bold mb-2">
                                         {card.title}

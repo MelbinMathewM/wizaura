@@ -3,25 +3,7 @@
 import Image from "next/image";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
-
-const projects = [
-    {
-        title: "DrChiller",
-        description: "A comprehensive HVAC and chiller management platform.",
-        tech: ["React", "TypeScript", "EmailJS", "Tailwind CSS"],
-        live: "https://drchiller.com",
-        github: "https://github.com/dr-chiller/dr.chiller",
-        image: "/drchiller_landing.webp",
-    },
-    {
-        title: "Glassics",
-        description: "An e-commerce platform for stylish eyeglasses and sunglasses.",
-        tech: ["Node.js", "Bootstrap", "EJS", "MongoDB"],
-        live: "https://glassics.shop",
-        github: "https://github.com/melbinmathewm/glassics",
-        image: "/glassics_landing.webp",
-    },
-];
+import { projects } from "@/data/projects";
 
 export default function ProjectsList() {
     const cardVariants = {

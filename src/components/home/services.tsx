@@ -3,13 +3,17 @@
 import Link from "next/link";
 import { FaArrowRight, FaLaptopCode, FaMobileAlt, FaPalette } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { services } from "@/data/services";
+
+const iconMap: Record<string, React.ReactNode> = {
+    FaLaptopCode: <FaLaptopCode size={28} className="text-teal-500 mb-3" />,
+    FaMobileAlt: <FaMobileAlt size={28} className="text-teal-500 mb-3" />,
+    FaPalette: <FaPalette size={28} className="text-teal-500 mb-3" />,
+};
 
 const HomeServices = () => {
-    const serviceCards = [
-        { icon: FaLaptopCode, title: "Web Development", description: "Modern, responsive websites that engage users and drive results." },
-        { icon: FaMobileAlt, title: "Mobile Apps", description: "iOS and Android apps that provide seamless user experiences." },
-        { icon: FaPalette, title: "UI/UX Design", description: "Intuitive and beautiful designs that delight your users." },
-    ];
+
+    const topServices = services.slice(0, 3);
 
     const cardVariants = {
         hidden: { opacity: 0, y: 30 },
@@ -44,7 +48,7 @@ const HomeServices = () => {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
                 >
-                    {serviceCards.map((card, index) => {
+                    {topServices.map((card, index) => {
                         const IconComponent = card.icon;
                         return (
                             <motion.div
@@ -62,7 +66,7 @@ const HomeServices = () => {
                                         ${index === 1 ? "md:top-10" : index === 2 ? "md:top-20" : "md:top-0"}
                                     `}
                                 >
-                                    <IconComponent className="text-4xl text-teal-500 dark:text-teal-300 mb-5" />
+                                    <div>{iconMap[card.icon]}</div>
                                     <h3 className="text-xl font-bold mb-2 text-center text-gray-900 dark:text-white">{card.title}</h3>
                                     <p className="text-sm text-gray-600 dark:text-gray-400 text-center leading-relaxed">{card.description}</p>
                                 </div>

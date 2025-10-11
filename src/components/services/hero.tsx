@@ -1,51 +1,21 @@
 "use client";
 
-import { FaReact, FaServer, FaDatabase, FaLock, FaRocket, FaChartLine, FaComments, FaCogs } from "react-icons/fa";
+import { FaDatabase, FaRocket, FaChartLine, FaComments, FaCogs, FaLaptopCode, FaMobileAlt, FaPalette } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { services } from "@/data/services";
+
+const iconMap: Record<string, React.ReactNode> = {
+    FaLaptopCode: <FaLaptopCode size={28} className="text-teal-500 mb-3" />,
+    FaMobileAlt: <FaMobileAlt size={28} className="text-teal-500 mb-3" />,
+    FaDatabase: <FaDatabase size={28} className="text-teal-500 mb-3" />,
+    FaPalette: <FaPalette size={28} className="text-teal-500 mb-3" />,
+    FaRocket: <FaRocket size={28} className="text-teal-500 mb-3" />,
+    FaChartLine: <FaChartLine size={28} className="text-teal-500 mb-3" />,
+    FaComments: <FaComments size={28} className="text-teal-500 mb-3" />,
+    FaCogs: <FaCogs size={28} className="text-teal-500 mb-3" />,
+};
 
 export default function ServicesHero() {
-    const services = [
-        {
-            title: "Full-Stack Web Development",
-            description: "Build modern, scalable full-stack applications using the MERN stack (MongoDB, Express, React, Node.js).",
-            icon: <FaCogs size={28} className="text-teal-500 mb-3" />,
-        },
-        {
-            title: "Frontend Development",
-            description: "Design responsive, interactive UIs with React and Tailwind CSS, optimized for performance and accessibility.",
-            icon: <FaReact size={28} className="text-teal-500 mb-3" />,
-        },
-        {
-            title: "Backend & API Development",
-            description: "Develop secure and efficient REST APIs and backend services with Node.js and Express.",
-            icon: <FaServer size={28} className="text-teal-500 mb-3" />,
-        },
-        {
-            title: "Authentication & Security",
-            description: "Implement robust authentication with JWT, OAuth, and role-based access while ensuring app security.",
-            icon: <FaLock size={28} className="text-teal-500 mb-3" />,
-        },
-        {
-            title: "Database Management",
-            description: "Design and integrate MongoDB and SQL databases, ensuring efficiency, reliability, and scalability.",
-            icon: <FaDatabase size={28} className="text-teal-500 mb-3" />,
-        },
-        {
-            title: "Deployment & DevOps",
-            description: "Deploy applications using Docker, Vercel, Render, or AWS with CI/CD pipelines and cloud scaling.",
-            icon: <FaRocket size={28} className="text-teal-500 mb-3" />,
-        },
-        {
-            title: "Real-Time Features",
-            description: "Add live chat, notifications, and real-time updates powered by WebSockets and Socket.IO.",
-            icon: <FaComments size={28} className="text-teal-500 mb-3" />,
-        },
-        {
-            title: "SEO & Analytics",
-            description: "Optimize websites for search engines (SEO) and integrate analytics dashboards for performance tracking.",
-            icon: <FaChartLine size={28} className="text-teal-500 mb-3" />,
-        },
-    ];
 
     const cardVariants = {
         hidden: { opacity: 0, y: 30 },
@@ -91,7 +61,7 @@ export default function ServicesHero() {
                                 overflow-hidden bg-gradient-to-tr from-gray-200 via-gray-50 to-gray-300 dark:from-gray-900 dark:via-gray-950 dark:to-gray-800"
                                 whileHover={{ y: -5 }}
                             >
-                                <div className="text-indigo-500 mb-3">{service.icon}</div>
+                                <div>{iconMap[service.icon]}</div>
                                 <h3 className="text-xl font-bold mb-2 text-center text-gray-900 dark:text-white">
                                     {service.title}
                                 </h3>

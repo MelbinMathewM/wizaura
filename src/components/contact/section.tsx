@@ -11,6 +11,19 @@ const iconMap: Record<string, React.ReactNode> = {
     FaMapMarkerAlt: <FaMapMarkerAlt className="w-4 h-4 text-teal-500 dark:text-teal-400 me-2" />,
 };
 
+type InfoItem = {
+    icon: string;
+    title: string;
+    detail: string | string[];
+    href?: string | string[];
+};
+
+interface InfoGridProps {
+    info: InfoItem[];
+    iconMap: Record<string, React.ReactNode>;
+}
+
+
 export default function ContactSection() {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
     const [submitted, setSubmitted] = useState(false);
@@ -79,28 +92,52 @@ export default function ContactSection() {
                     <h2 className="text-xl sm:text-2xl font-bold text-teal-600 dark:text-teal-400 mb-4 text-center">
                         Contact Information
                     </h2>
+
                     <div className="grid sm:grid-cols-3 lg:grid-cols-1 gap-4 sm:gap-8 lg:gap-3">
-                        {info.map((item, idx) => (
-                            <a
-                                key={idx}
-                                href={item.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex flex-col items-center lg:items-start bg-white dark:bg-gray-900 p-4 rounded-xl shadow hover:shadow-xl dark:hover:shadow-gray-900 transition
-                                border border-teal-400/30 dark:border-teal-800
-                                bg-gradient-to-tr from-gray-200 via-gray-50 to-gray-300
-                                dark:from-gray-900 dark:via-gray-950 dark:to-gray-800"
-                            >
-                                <h3 className="text-lg font-semibold text-teal-500 mb-2 flex items-center">
-                                    <span>{iconMap[item.icon]}</span>
-                                    {item.title}
-                                </h3>
-                                <p className="text-gray-700 dark:text-gray-300">{item.detail}</p>
-                            </a>
-                        ))}
+                        {info.map((item, idx) => {
+                            const isArray = Array.isArray(item.detail);
+                            const hrefArray = Array.isArray(item.href) ? item.href : [item.href];
+
+                            return (
+                                <div
+                                    key={idx}
+                                    className="flex flex-col items-center lg:items-start bg-white dark:bg-gray-900 p-4 rounded-xl shadow hover:shadow-xl dark:hover:shadow-gray-900 transition
+                                        border border-teal-400/30 dark:border-teal-800
+                                        bg-gradient-to-tr from-gray-200 via-gray-50 to-gray-300
+                                        dark:from-gray-900 dark:via-gray-950 dark:to-gray-800"
+                                >
+                                    <h3 className="text-lg font-semibold text-teal-500 mb-2 flex items-center gap-2">
+                                        <span>{iconMap[item.icon]}</span>
+                                        {item.title}
+                                    </h3>
+
+                                    <div className="flex flex-row gap-5">
+                                        {isArray ? (
+                                            (item.detail as string[]).map((detail, i) => (
+                                                <a
+                                                    key={i}
+                                                    href={hrefArray[i] as string}
+                                                    className="text-gray-700 dark:text-gray-300 hover:text-teal-600 transition"
+                                                >
+                                                    {detail}
+                                                </a>
+                                            ))
+                                        ) : item.href ? (
+                                            <a
+                                                href={item.href as string}
+                                                className="text-gray-700 dark:text-gray-300 hover:text-teal-600 transition"
+                                            >
+                                                {item.detail as string}
+                                            </a>
+                                        ) : (
+                                            <p className="text-gray-700 dark:text-gray-300">{item.detail}</p>
+                                        )}
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
-
                 {/* Right Side: Contact Form */}
                 <form
                     onSubmit={handleSubmit}

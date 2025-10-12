@@ -54,7 +54,7 @@ const FloatingActions = () => {
 
                     {/* Email */}
                     <a
-                        href="mailto:info@wizaura.com"
+                        href="mailto:melbinppmathewp@gmail.com"
                         className="flex items-center gap-1 rounded-full bg-teal-500 px-3 py-2 text-white hover:bg-teal-600 transition shadow"
                         title="Send Email"
                     >

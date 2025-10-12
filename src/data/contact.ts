@@ -2,19 +2,19 @@ export const info = [
     {
         icon: "FaPhoneAlt",
         title: "Phone",
-        detail: "+91 97478 27371",
-        href: "tel:+919747827371",
+        detail: ["+91 97478 27371", "+91 70259 31622"],
+        href: ["tel:+919747827371", "tel:+917025931622"],
     },
     {
         icon: "FaEnvelope",
         title: "Email",
-        detail: "info@wizaura.com",
-        href: "mailto:info@wizaura.com",
+        detail: "melbinppmathewp@gmail.com",
+        href: "mailto:melbinppmathewp@gmail.com",
     },
     {
         icon: "FaMapMarkerAlt",
         title: "Address",
         detail: "Cherupuzha, Kerala, India",
-        href: "https://www.google.com/maps/search/Cherupuzha,+Kannur,+Kerala",
+        href: null,
     },
 ];

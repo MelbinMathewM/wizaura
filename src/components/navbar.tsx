@@ -52,7 +52,7 @@ export default function Navbar() {
 
                     {/* Brand Name */}
                     <Link
-                        href="#home"
+                        href="/"
                         className="text-2xl font-bold text-teal-500"
                     >
                         Wizaura

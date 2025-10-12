@@ -62,7 +62,7 @@ export default function Footer() {
                             href="mailto:info@wizaura.com"
                             className="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"
                         >
-                            info@wizaura.com
+                            melbinppmathewp@gmail.com
                         </a>
                     </p>
                     <p className="flex items-center gap-2">

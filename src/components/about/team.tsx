@@ -23,7 +23,7 @@ export default function AboutTeam() {
                     <div
                         key={member.name}
                         className="bg-gradient-to-tr bg-gray-50 dark:bg-gray-950
-                        border border-teal-300 dark:border-teal-700
+                        border border-teal-200 dark:border-teal-900
                         rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 p-6 flex flex-col items-center text-center"
                     >
                         <Image

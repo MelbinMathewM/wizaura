@@ -38,12 +38,12 @@ const HomeChoose = () => {
 
                 {/* Rhombus Cards Section */}
                 <div className="relative w-full flex justify-center md:justify-start ps-0 sm:ps-4 lg:ps-36 mt-12 md:-mt-24 md:mb-6">
-                    <div className="relative w-[300px] h-[300px] md:w-[360px] md:h-[360px]">
+                    <div className="relative w-[360px] h-[360px] md:w-[360px] md:h-[360px]">
                         {benefitCards.map((card) => (
                             <div
                                 key={card.id}
                                 className={`
-                  absolute w-[120px] h-[120px] md:w-[140px] md:h-[140px]
+                  absolute w-[140px] h-[140px] md:w-[140px] md:h-[140px]
                   bg-gradient-to-tr from-gray-200 via-gray-50 to-gray-300 
                   dark:from-gray-900 dark:via-gray-950 dark:to-gray-800
                   border border-teal-300 dark:border-teal-800 rounded-lg
@@ -64,11 +64,11 @@ const HomeChoose = () => {
                                 </div>
 
                                 {/* Square (hover) View */}
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center text-center px-2 py-2 transform transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
-                                    <div className="text-xl text-teal-500 mb-1 flex items-center justify-center">
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center text-center px-2 py-2 transform transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]">
+                                    <div className="text-lg sm:text-xl text-teal-500 mb-1 flex items-center justify-center">
                                         {iconMap[card.icon]}
                                     </div>
-                                    <h3 className="text-base text-gray-700 dark:text-gray-300 font-bold mb-1">
+                                    <h3 className="text-sm sm:text-base text-gray-700 dark:text-gray-300 font-bold mb-1">
                                         {card.title}
                                     </h3>
                                     <p className="text-xs text-gray-500 dark:text-gray-400">

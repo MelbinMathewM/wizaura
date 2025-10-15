@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
-  // manifest: "/site.webmanifest",
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "Wizaura - Web & App Developers",
     description: "Crafting modern web and mobile applications that empower businesses.",
@@ -78,6 +78,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+    <link rel="icon" href="/favicon.png" sizes="any" />
       <body className="bg-white dark:bg-black">
         <ClientWrapper>
           <Navbar />

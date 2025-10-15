@@ -7,7 +7,8 @@ import ClientWrapper from "@/components/client-wrapper";
 
 export const metadata: Metadata = {
   title: "Wizaura - Web & App Developers",
-  description: "Wizaura crafts modern web and mobile applications that empower businesses. Full-stack development, UI/UX design, and more.",
+  description:
+    "Wizaura crafts modern web and mobile applications that empower businesses. Full-stack development, UI/UX design, and more.",
   keywords: [
     "web development",
     "app development",
@@ -23,21 +24,22 @@ export const metadata: Metadata = {
   authors: [{ name: "Melbin Mathew", url: "https://melbinmathew.vercel.app" }],
   creator: "Wizaura",
   publisher: "Wizaura",
-  // metadataBase: new URL("https://wizaura.com"),
   applicationName: "Wizaura",
   colorScheme: "dark light",
   themeColor: "#14B8A6",
   viewport: "width=device-width, initial-scale=1.0",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
     apple: "/favicon.png",
   },
   manifest: "/site.webmanifest",
   openGraph: {
     title: "Wizaura - Web & App Developers",
-    description: "Crafting modern web and mobile applications that empower businesses.",
-    // url: "https://wizaura.com",
+    description:
+      "Crafting modern web and mobile applications that empower businesses.",
     siteName: "Wizaura",
     type: "website",
     locale: "en_US",
@@ -53,7 +55,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Wizaura - Web & App Developers",
-    description: "Crafting modern web and mobile applications that empower businesses.",
+    description:
+      "Crafting modern web and mobile applications that empower businesses.",
     site: "@wizaura",
     creator: "@melbinmathew",
     images: ["/og-image.png"],
@@ -78,7 +81,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-    <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
       <body className="bg-white dark:bg-black">
         <ClientWrapper>
           <Navbar />

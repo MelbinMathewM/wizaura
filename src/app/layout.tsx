@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
-  manifest: "/site.webmanifest",
+  // manifest: "/site.webmanifest",
   openGraph: {
     title: "Wizaura - Web & App Developers",
     description: "Crafting modern web and mobile applications that empower businesses.",

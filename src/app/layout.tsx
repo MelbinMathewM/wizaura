@@ -78,7 +78,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-    <link rel="icon" href="/favicon.png" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
       <body className="bg-white dark:bg-black">
         <ClientWrapper>
           <Navbar />

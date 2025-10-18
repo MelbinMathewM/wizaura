@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Melbin Mathew", url: "https://melbinmathew.vercel.app" }],
   creator: "Wizaura",
   publisher: "Wizaura",
-  // metadataBase: new URL("https://wizaura.com"),
+  metadataBase: new URL("https://wizaura.co"),
   applicationName: "Wizaura",
   colorScheme: "dark light",
   themeColor: "#14B8A6",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Wizaura - Web & App Developers",
     description: "Crafting modern web and mobile applications that empower businesses.",
-    // url: "https://wizaura.com",
+    url: "https://wizaura.co",
     siteName: "Wizaura",
     type: "website",
     locale: "en_US",

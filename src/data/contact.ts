@@ -8,8 +8,8 @@ export const info = [
     {
         icon: "FaEnvelope",
         title: "Email",
-        detail: "melbinppmathewp@gmail.com",
-        href: "mailto:melbinppmathewp@gmail.com",
+        detail: "info@wizaura.co",
+        href: "mailto:info@wizaura.co",
     },
     {
         icon: "FaMapMarkerAlt",

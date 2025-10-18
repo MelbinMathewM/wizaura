@@ -11,6 +11,12 @@ module.exports = {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                inter: ['Inter', 'sans-serif'],
+                orbitron: ['Orbitron', 'sans-serif'],
+                roboto: ['Roboto', 'sans-serif'],
+                poppins: ['Poppins', 'sans-serif'],
+            },
             colors: {
                 violet: {
                     50: '#F5F3FF',

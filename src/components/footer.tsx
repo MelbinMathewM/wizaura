@@ -59,10 +59,10 @@ export default function Footer() {
                     <p className="flex items-center gap-2">
                         <FaEnvelope className="text-teal-600 dark:text-teal-400" />
                         <a
-                            href="mailto:melbinppmathewp@gmail.com"
+                            href="mailto:info@wizaura.co"
                             className="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"
                         >
-                            melbinppmathewp@gmail.com
+                            info@wizaura.co
                         </a>
                     </p>
                     <p className="flex items-center gap-2">

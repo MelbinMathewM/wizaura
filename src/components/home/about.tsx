@@ -21,7 +21,7 @@ const HomeAbout = () => {
     };
 
     return (
-        <section className="dark:bg-black py-12 px-4 sm:px-8 lg:px-12 overflow-x-hidden">
+        <section className="dark:bg-black py-8 sm:py-12 px-4 sm:px-8 lg:px-12 overflow-x-hidden">
             <div className="max-w-7xl mx-auto">
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
@@ -38,7 +38,7 @@ const HomeAbout = () => {
                 <div
                     className="
             grid grid-cols-1 md:grid-cols-12
-            gap-6 sm:gap-8 lg:gap-10
+            gap-4 sm:gap-8 lg:gap-10
             items-start
           "
                 >

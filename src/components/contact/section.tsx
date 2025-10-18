@@ -192,7 +192,7 @@ export default function ContactSection() {
                     </div>
 
                     {submitted && (
-                        <p className="text-teal-600 font-semibold dark:text-teal-400 text-center mb-2">
+                        <p className="text-green-600 font-semibold dark:text-green-400 text-center mb-2">
                             Thank you! Your message has been sent.
                         </p>
                     )}

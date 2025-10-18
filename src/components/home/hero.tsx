@@ -31,7 +31,7 @@ export default function HomeHero() {
 
   return (
     <section
-      className="relative w-full h-screen flex items-center justify-center 
+      className="relative w-full h-[80vh] sm:h-screen flex items-center justify-center 
       bg-[url('/hero.jpeg')] bg-cover bg-center bg-no-repeat overflow-hidden"
     >
       {/* Dark overlay for contrast */}
@@ -70,7 +70,7 @@ export default function HomeHero() {
       {/* Left Edge Button */}
       <Link
         href="/services"
-        className="absolute bottom-16 left-8 sm:bottom-12 sm:left-24 lg:left-30 flex flex-col items-center justify-center 
+        className="absolute bottom-6 left-8 sm:bottom-12 sm:left-24 lg:left-30 flex flex-col items-center justify-center 
         bg-gradient-to-tr from-gray-900 via-gray-950 to-gray-800
         w-20 h-20 sm:w-24 sm:h-24 lg:w-30 lg:h-30 rounded-full text-teal-500 shadow-lg border-2 border-teal-500
         hover:scale-110 transition-transform duration-300 z-10"
@@ -82,7 +82,7 @@ export default function HomeHero() {
       {/* Right Edge Button */}
       <Link
         href="/contact"
-        className="absolute bottom-16 right-8 sm:bottom-12 sm:right-24 lg:right-30 flex flex-col items-center justify-center 
+        className="absolute bottom-6 right-8 sm:bottom-12 sm:right-24 lg:right-30 flex flex-col items-center justify-center 
         bg-gradient-to-tr from-gray-900 via-gray-950 to-gray-800
         w-20 h-20 sm:w-24 sm:h-24 lg:w-30 lg:h-30 rounded-full text-teal-500 shadow-lg border-2 border-teal-500
         hover:scale-110 transition-transform duration-300 z-10"

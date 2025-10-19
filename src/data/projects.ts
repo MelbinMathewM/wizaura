@@ -2,17 +2,17 @@ export const projects = [
     {
         title: "DrChiller",
         description: "A comprehensive HVAC and chiller management platform.",
-        tech: ["React", "TypeScript", "EmailJS", "Tailwind CSS"],
+        tech: ["Next.js", "JavaScript", "EmailJS", "Tailwind CSS", "Supabase"],
         live: "https://drchiller.com",
-        github: "https://github.com/dr-chiller/dr.chiller",
+        github: "https://github.com/dr-chiller/drchiller-next",
         image: "/drchiller_landing.webp",
     },
     {
         title: "Prograbyte",
         description: "An E-learning + Blogging platform (Demo).",
         tech: ["React", "TypeScript", "Node.js", "Tailwind CSS", "MongoDB"],
-        live: "https://drchiller.com",
-        github: "https://github.com/dr-chiller/dr.chiller",
+        live: "https://prograbyte.site",
+        github: "https://github.com/melbinmathewm/prograbyte",
         image: "/prograbyte_landing.webp",
     },
     {

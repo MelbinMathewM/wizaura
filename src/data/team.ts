@@ -11,7 +11,7 @@ export const teamMembers = [
             role: "Co-Founder & COO",
             img: "/aswanth_c_1.jpg",
             bio: "Driving operations and ensuring seamless execution of projects across all teams.",
-            portfolio: "https://melbinmathew.vercel.app",
+            portfolio: null,
         },
         
     ];

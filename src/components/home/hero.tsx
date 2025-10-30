@@ -56,7 +56,7 @@ export default function HomeHero() {
             height={100}
             className="sm:mb-2 rounded-full"
           />
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-md">
+          <h1 className="text-5xl sm:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-md">
             Wizaura
           </h1>
           <p className="text-teal-200 text-sm sm:text-lg font-semibold mb-1 sm:mb-3">

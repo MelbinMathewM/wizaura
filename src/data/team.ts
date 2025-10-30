@@ -2,7 +2,7 @@ export const teamMembers = [
         {
             name: "Melbin Mathew",
             role: "Founder & CEO",
-            img: "/melbin_mathew_1.webp",
+            img: "/melbin-2.jpg",
             bio: "Visionary behind Wizaura, leading innovation in web and app solutions.",
             portfolio: "https://melbinmathew.vercel.app",
         },
@@ -11,7 +11,7 @@ export const teamMembers = [
             role: "Co-Founder & COO",
             img: "/aswanth_c_1.jpg",
             bio: "Driving operations and ensuring seamless execution of projects across all teams.",
-            portfolio: null,
+            portfolio: "https://aswanth-portfolio-chi.vercel.app",
         },
         
     ];

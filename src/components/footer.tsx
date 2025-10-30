@@ -86,8 +86,8 @@ export default function Footer() {
                     <div className="flex gap-4 mt-2">
                         <a href="#" className="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"><FaFacebookF /></a>
                         <a href="#" className="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"><FaTwitter /></a>
-                        <a href="#" className="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"><FaLinkedinIn /></a>
-                        <a href="#" className="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"><FaInstagram /></a>
+                        <a href="https://www.linkedin.com/company/wizaura-co" className="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"><FaLinkedinIn /></a>
+                        <a href="https://www.instagram.com/wizaura.co?igsh=bWhuMWxtZHpna3cz" className="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors duration-300"><FaInstagram /></a>
                     </div>
                 </div>
             </div>

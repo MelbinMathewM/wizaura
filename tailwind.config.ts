@@ -16,6 +16,7 @@ module.exports = {
                 orbitron: ['Orbitron', 'sans-serif'],
                 roboto: ['Roboto', 'sans-serif'],
                 poppins: ['Poppins', 'sans-serif'],
+                sans: ["var(--font-plus-jakarta)", "sans-serif"],
             },
             colors: {
                 violet: {

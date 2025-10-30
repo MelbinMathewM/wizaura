@@ -4,6 +4,14 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import FloatingActions from "@/components/contact-buttons";
 import ClientWrapper from "@/components/client-wrapper";
+import { Plus_Jakarta_Sans } from "next/font/google";
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-plus-jakarta",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Wizaura - Web & App Developers",
@@ -78,7 +86,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-white dark:bg-black">
+      <body className={`${plusJakarta.variable} font-sans bg-white dark:bg-black antialiased`}>
         <ClientWrapper>
           <Navbar />
           {children}
